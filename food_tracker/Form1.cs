@@ -21,14 +21,14 @@ namespace food_tracker {
             }
 
             // need to persist to database for the past days and current day for reloading - below is an exple of how the totals will be calculated.
-            var calories = parseTextBoxForInt(caloriesTextBox);
-            var fats = parseTextBoxForInt(fatTextBox);
-            var sats = parseTextBoxForInt(saturatesTextBox);
-            var carbs = parseTextBoxForInt(carbsTextBox);
-            var sugars = parseTextBoxForInt(sugarsTextBox);
-            var protein = parseTextBoxForInt(proteinTextBox);
-            var salt = parseTextBoxForInt(saltTextBox);
-            var fibre = parseTextBoxForInt(fibreTextBox);
+            var calories = parseTextBoxForDouble(caloriesTextBox);
+            var fats = parseTextBoxForDouble(fatTextBox);
+            var sats = parseTextBoxForDouble(saturatesTextBox);
+            var carbs = parseTextBoxForDouble(carbsTextBox);
+            var sugars = parseTextBoxForDouble(sugarsTextBox);
+            var protein = parseTextBoxForDouble(proteinTextBox);
+            var salt = parseTextBoxForDouble(saltTextBox);
+            var fibre = parseTextBoxForDouble(fibreTextBox);
 
             currentDayItems.Items.Add(new FoodBoxItem(calories, fats, sats, carbs, sugars, protein, salt, fibre, nameTextBox.Text));
 
@@ -37,7 +37,7 @@ namespace food_tracker {
         }
 
         private void showTotals() {
-            int totalCalories = 0, totalFats = 0, totalSats = 0, totalCarbs = 0, totalSugars = 0, totalProteins = 0, totalSalts = 0, totalFibres = 0;
+            double totalCalories = 0, totalFats = 0, totalSats = 0, totalCarbs = 0, totalSugars = 0, totalProteins = 0, totalSalts = 0, totalFibres = 0;
 
             foreach (FoodBoxItem item in currentDayItems.Items) {
                 totalCalories += item.calories;
@@ -60,8 +60,8 @@ namespace food_tracker {
             totalSaltLbl.Text = totalSalts.ToString();
         }
 
-        private int parseTextBoxForInt(TextBox text) {
-            var parsed = int.Parse(text.Text);
+        private double parseTextBoxForDouble(TextBox text) {
+            var parsed = double.Parse(text.Text);
             return parsed;
         }
 
