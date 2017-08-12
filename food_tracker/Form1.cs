@@ -53,11 +53,11 @@ namespace food_tracker {
             totalCalLbl.Text = totalCalories.ToString();
             totalFatLbl.Text = totalFats.ToString();
             totalCarbsLbl.Text = totalCarbs.ToString();
-            totalFibreLbl.Text = totalFibreLbl.ToString();
-            totalProteinLbl.Text = totalProteinLbl.ToString();
+            totalFibreLbl.Text = totalFibres.ToString();
+            totalProteinLbl.Text = totalProteins.ToString();
             totalSatFatLbl.Text = totalSats.ToString();
             totalSugarsLbl.Text = totalSugars.ToString();
-            totalSaltLbl.Text = totalSaltLbl.ToString();
+            totalSaltLbl.Text = totalSalts.ToString();
         }
 
         private int parseTextBoxForInt(TextBox text) {
@@ -85,7 +85,7 @@ namespace food_tracker {
 
         private void currentDayItems_DoubleClick(object sender, EventArgs e) {
             if(currentDayItems.SelectedIndex > -1) {
-                MessageBox.Show("))");
+                MessageBox.Show("");
             }
             try {
                 var item = (FoodBoxItem)currentDayItems.SelectedItem;
