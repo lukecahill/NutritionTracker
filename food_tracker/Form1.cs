@@ -1,11 +1,24 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 using System.Diagnostics;
 
 namespace food_tracker {
     public partial class Form1 : Form {
+
+        TrackerContext context = new TrackerContext();
         public Form1() {
             InitializeComponent();
+            this.loadData();
+        }
+
+        private void loadData() {
+            var data = context.Nutrition.ToList();
+            foreach(var item in data) {
+                currentDayItems.Items.Add(new FoodBoxItem(item.calories, item.fats, item.saturatedFats, item.carbohydrates, item.sugars, item.protein, item.salt, item.fibre, item.name));
+            }
+
+            this.showTotals();
         }
 
         private void addNewItemButton_Click(object sender, EventArgs e) {
@@ -20,18 +33,34 @@ namespace food_tracker {
                 return;
             }
 
+            var day = "";
+            if(currentDayItems.Items.Count <= 0) {
+                day = dateTimePicker.Text.Replace(" ", "");
+            } else {
+                day = dateTimePicker.Text.Replace(" ", "");
+            }
+
             // need to persist to database for the past days and current day for reloading - below is an exple of how the totals will be calculated.
-            var calories = parseTextBoxForDouble(caloriesTextBox);
-            var fats = parseTextBoxForDouble(fatTextBox);
-            var sats = parseTextBoxForDouble(saturatesTextBox);
-            var carbs = parseTextBoxForDouble(carbsTextBox);
-            var sugars = parseTextBoxForDouble(sugarsTextBox);
-            var protein = parseTextBoxForDouble(proteinTextBox);
-            var salt = parseTextBoxForDouble(saltTextBox);
-            var fibre = parseTextBoxForDouble(fibreTextBox);
+            var nutrition = new NutritionItem(
+                nameTextBox.Text,
+                day,
+                parseTextBoxForDouble(caloriesTextBox), 
+                parseTextBoxForDouble(carbsTextBox),
+                parseTextBoxForDouble(sugarsTextBox),
+                parseTextBoxForDouble(fatTextBox),
+                parseTextBoxForDouble(saturatesTextBox),
+                parseTextBoxForDouble(proteinTextBox),
+                parseTextBoxForDouble(saltTextBox),
+                parseTextBoxForDouble(fibreTextBox)
+            );
 
-            currentDayItems.Items.Add(new FoodBoxItem(calories, fats, sats, carbs, sugars, protein, salt, fibre, nameTextBox.Text));
+            currentDayItems.Items.Add(new FoodBoxItem(nutrition.calories, nutrition.fats, nutrition.saturatedFats, 
+                nutrition.carbohydrates, nutrition.sugars, nutrition.protein, 
+                nutrition.salt, nutrition.fibre, nameTextBox.Text));
 
+            context.Nutrition.Add(nutrition);
+            context.SaveChanges();
+            
             this.showTotals();
             this.resetFields();
         }

@@ -1,6 +1,4 @@
 ﻿using System.Windows.Controls;
-using System.Windows.Forms;
-
 namespace food_tracker {
 	public class FoodBoxItem : ListBoxItem {
 
