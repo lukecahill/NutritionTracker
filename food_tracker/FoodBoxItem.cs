@@ -11,11 +11,12 @@ namespace food_tracker {
 		public int sugar { get; set; }
 		public int protein { get; set; }
 		public int salt { get; set; }
+		public int fibre { get; set; }
 		public string name { get; set; }
 
 		public FoodBoxItem() : base() { }
 
-		public FoodBoxItem(int cals, int fats, int satFat, int carbs, int sugars, int protein, int salt, string name) {
+		public FoodBoxItem(int cals, int fats, int satFat, int carbs, int sugars, int protein, int salt, int fibre, string name) {
 			this.name = name;
 			this.calories = cals;
 			this.fats = fats;
@@ -24,6 +25,7 @@ namespace food_tracker {
 			this.carbohydrates = carbs;
 			this.sugar = sugars;
 			this.protein = protein;
+			this.fibre = fibre;
 		}
 
 		public override string ToString() {
