@@ -13,5 +13,9 @@ namespace food_tracker {
 		public Form1() {
 			InitializeComponent();
 		}
+
+		private void addNewItemButton_Click(object sender, EventArgs e) {
+
+		}
 	}
 }
