@@ -7,9 +7,12 @@ namespace food_tracker {
     public partial class Form1 : Form {
 
         TrackerContext context = new TrackerContext();
+        TextBox[] textBoxes;
+
         public Form1() {
             InitializeComponent();
             this.loadData();
+            textBoxes = new TextBox[] { nameTextBox, caloriesTextBox, fatTextBox, saturatesTextBox, carbsTextBox, sugarsTextBox, fibreTextBox, proteinTextBox, saltTextBox };
         }
 
         private void loadData() {
@@ -95,15 +98,9 @@ namespace food_tracker {
         }
 
         private void resetFields() {
-            nameTextBox.Clear();
-            caloriesTextBox.Clear();
-            fatTextBox.Clear();
-            saturatesTextBox.Clear();
-            carbsTextBox.Clear();
-            sugarsTextBox.Clear();
-            fibreTextBox.Clear();
-            proteinTextBox.Clear();
-            saltTextBox.Clear();
+            foreach(var item in textBoxes) {
+                item.Clear();
+            }
         }
 
         private bool areFieldsEmpty() {
