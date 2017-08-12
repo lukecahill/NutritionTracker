@@ -4,19 +4,19 @@ using System.Windows.Forms;
 namespace food_tracker {
 	public class FoodBoxItem : ListBoxItem {
 
-		public int calories { get; set; }
-		public int fats { get; set; }
-		public int saturatedFat { get; set; }
-		public int carbohydrates { get; set; }
-		public int sugar { get; set; }
-		public int protein { get; set; }
-		public int salt { get; set; }
-		public int fibre { get; set; }
+		public double calories { get; set; }
+		public double fats { get; set; }
+		public double saturatedFat { get; set; }
+		public double carbohydrates { get; set; }
+		public double sugar { get; set; }
+		public double protein { get; set; }
+		public double salt { get; set; }
+		public double fibre { get; set; }
 		public string name { get; set; }
 
 		public FoodBoxItem() : base() { }
 
-		public FoodBoxItem(int cals, int fats, int satFat, int carbs, int sugars, int protein, int salt, int fibre, string name) {
+		public FoodBoxItem(double cals, double fats, double satFat, double carbs, double sugars, double protein, double salt, double fibre, string name) {
 			this.name = name;
 			this.calories = cals;
 			this.fats = fats;
