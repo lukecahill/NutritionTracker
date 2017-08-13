@@ -4,12 +4,12 @@ using System.Windows.Forms;
 using System.Diagnostics;
 
 namespace food_tracker {
-    public partial class Form1 : Form {
+    public partial class trackerForm : Form {
 
         TrackerContext context = new TrackerContext();
         TextBox[] textBoxes;
 
-        public Form1() {
+        public trackerForm() {
             InitializeComponent();
             this.loadData();
             textBoxes = new TextBox[] { nameTextBox, caloriesTextBox, fatTextBox, saturatesTextBox, carbsTextBox, sugarsTextBox, fibreTextBox, proteinTextBox, saltTextBox };
@@ -142,6 +142,15 @@ namespace food_tracker {
             //    e.Handled = true;
             //    return;
             //}
+        }
+        
+        private void currentDayItems_Click(object sender, EventArgs e) {
+            MouseEventArgs me = (MouseEventArgs)e;
+            if(me.Button == MouseButtons.Right) {
+                if(currentDayItems.Bounds.Contains(me.Location)) {
+
+                }
+            }
         }
     }
 }

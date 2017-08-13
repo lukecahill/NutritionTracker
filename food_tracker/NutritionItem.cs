@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 namespace food_tracker {
     public class NutritionItem {
 
@@ -15,6 +16,7 @@ namespace food_tracker {
         public double salt { get; set; }
         public double fibre { get; set; }
 
+        [Obsolete("Only needed for serialization and materialization", true)]
         public NutritionItem() { }
 
         public NutritionItem(string name, string day, double calories, double carbohydrates, double sugars, double fats, double satFat, double protein, double salt, double fibre) {

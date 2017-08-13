@@ -1,5 +1,5 @@
 ﻿namespace food_tracker {
-	partial class Form1 {
+	partial class trackerForm {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -43,23 +43,23 @@
             this.label8 = new System.Windows.Forms.Label();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.totalCalLbl = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.totalFatLbl = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.totalSatFatLbl = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.totalCarbsLbl = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.totalSugarsLbl = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.totalFibreLbl = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.totalProteinLbl = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.totalSaltLbl = new System.Windows.Forms.Label();
+            this.totalProteinLbl = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.totalFibreLbl = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.totalSugarsLbl = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.totalCarbsLbl = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.totalSatFatLbl = new System.Windows.Forms.Label();
+            this.totalFatLbl = new System.Windows.Forms.Label();
+            this.totalCalLbl = new System.Windows.Forms.Label();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
@@ -72,6 +72,7 @@
             this.currentDayItems.Name = "currentDayItems";
             this.currentDayItems.Size = new System.Drawing.Size(383, 147);
             this.currentDayItems.TabIndex = 0;
+            this.currentDayItems.Click += new System.EventHandler(this.currentDayItems_Click);
             this.currentDayItems.DoubleClick += new System.EventHandler(this.currentDayItems_DoubleClick);
             // 
             // addNewItemButton
@@ -246,73 +247,6 @@
             this.panel1.Size = new System.Drawing.Size(244, 304);
             this.panel1.TabIndex = 20;
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(3, 11);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(169, 20);
-            this.label9.TabIndex = 21;
-            this.label9.Text = "Current Day Totals";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(7, 50);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(44, 13);
-            this.label10.TabIndex = 21;
-            this.label10.Text = "Calories";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // totalCalLbl
-            // 
-            this.totalCalLbl.AutoSize = true;
-            this.totalCalLbl.Location = new System.Drawing.Point(57, 50);
-            this.totalCalLbl.Name = "totalCalLbl";
-            this.totalCalLbl.Size = new System.Drawing.Size(10, 13);
-            this.totalCalLbl.TabIndex = 22;
-            this.totalCalLbl.Text = "-";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(29, 72);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(22, 13);
-            this.label12.TabIndex = 23;
-            this.label12.Text = "Fat";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // totalFatLbl
-            // 
-            this.totalFatLbl.AutoSize = true;
-            this.totalFatLbl.Location = new System.Drawing.Point(57, 72);
-            this.totalFatLbl.Name = "totalFatLbl";
-            this.totalFatLbl.Size = new System.Drawing.Size(10, 13);
-            this.totalFatLbl.TabIndex = 24;
-            this.totalFatLbl.Text = "-";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(7, 95);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(44, 13);
-            this.label14.TabIndex = 25;
-            this.label14.Text = "Sat. Fat";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // totalSatFatLbl
-            // 
-            this.totalSatFatLbl.AutoSize = true;
-            this.totalSatFatLbl.Location = new System.Drawing.Point(57, 95);
-            this.totalSatFatLbl.Name = "totalSatFatLbl";
-            this.totalSatFatLbl.Size = new System.Drawing.Size(10, 13);
-            this.totalSatFatLbl.TabIndex = 26;
-            this.totalSatFatLbl.Text = "-";
-            // 
             // label16
             // 
             this.label16.AutoSize = true;
@@ -322,72 +256,6 @@
             this.label16.TabIndex = 27;
             this.label16.Text = "Carbs";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // totalCarbsLbl
-            // 
-            this.totalCarbsLbl.AutoSize = true;
-            this.totalCarbsLbl.Location = new System.Drawing.Point(57, 124);
-            this.totalCarbsLbl.Name = "totalCarbsLbl";
-            this.totalCarbsLbl.Size = new System.Drawing.Size(10, 13);
-            this.totalCarbsLbl.TabIndex = 28;
-            this.totalCarbsLbl.Text = "-";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(11, 150);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(40, 13);
-            this.label18.TabIndex = 29;
-            this.label18.Text = "Sugars";
-            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // totalSugarsLbl
-            // 
-            this.totalSugarsLbl.AutoSize = true;
-            this.totalSugarsLbl.Location = new System.Drawing.Point(57, 150);
-            this.totalSugarsLbl.Name = "totalSugarsLbl";
-            this.totalSugarsLbl.Size = new System.Drawing.Size(10, 13);
-            this.totalSugarsLbl.TabIndex = 30;
-            this.totalSugarsLbl.Text = "-";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(21, 178);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(30, 13);
-            this.label20.TabIndex = 31;
-            this.label20.Text = "Fibre";
-            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // totalFibreLbl
-            // 
-            this.totalFibreLbl.AutoSize = true;
-            this.totalFibreLbl.Location = new System.Drawing.Point(57, 178);
-            this.totalFibreLbl.Name = "totalFibreLbl";
-            this.totalFibreLbl.Size = new System.Drawing.Size(10, 13);
-            this.totalFibreLbl.TabIndex = 32;
-            this.totalFibreLbl.Text = "-";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(11, 201);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(40, 13);
-            this.label22.TabIndex = 33;
-            this.label22.Text = "Protein";
-            this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // totalProteinLbl
-            // 
-            this.totalProteinLbl.AutoSize = true;
-            this.totalProteinLbl.Location = new System.Drawing.Point(57, 201);
-            this.totalProteinLbl.Name = "totalProteinLbl";
-            this.totalProteinLbl.Size = new System.Drawing.Size(10, 13);
-            this.totalProteinLbl.TabIndex = 34;
-            this.totalProteinLbl.Text = "-";
             // 
             // label24
             // 
@@ -408,6 +276,139 @@
             this.totalSaltLbl.TabIndex = 36;
             this.totalSaltLbl.Text = "-";
             // 
+            // totalProteinLbl
+            // 
+            this.totalProteinLbl.AutoSize = true;
+            this.totalProteinLbl.Location = new System.Drawing.Point(57, 201);
+            this.totalProteinLbl.Name = "totalProteinLbl";
+            this.totalProteinLbl.Size = new System.Drawing.Size(10, 13);
+            this.totalProteinLbl.TabIndex = 34;
+            this.totalProteinLbl.Text = "-";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(3, 11);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(169, 20);
+            this.label9.TabIndex = 21;
+            this.label9.Text = "Current Day Totals";
+            // 
+            // totalFibreLbl
+            // 
+            this.totalFibreLbl.AutoSize = true;
+            this.totalFibreLbl.Location = new System.Drawing.Point(57, 178);
+            this.totalFibreLbl.Name = "totalFibreLbl";
+            this.totalFibreLbl.Size = new System.Drawing.Size(10, 13);
+            this.totalFibreLbl.TabIndex = 32;
+            this.totalFibreLbl.Text = "-";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(11, 201);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(40, 13);
+            this.label22.TabIndex = 33;
+            this.label22.Text = "Protein";
+            this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(21, 178);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(30, 13);
+            this.label20.TabIndex = 31;
+            this.label20.Text = "Fibre";
+            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(7, 50);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(44, 13);
+            this.label10.TabIndex = 21;
+            this.label10.Text = "Calories";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // totalSugarsLbl
+            // 
+            this.totalSugarsLbl.AutoSize = true;
+            this.totalSugarsLbl.Location = new System.Drawing.Point(57, 150);
+            this.totalSugarsLbl.Name = "totalSugarsLbl";
+            this.totalSugarsLbl.Size = new System.Drawing.Size(10, 13);
+            this.totalSugarsLbl.TabIndex = 30;
+            this.totalSugarsLbl.Text = "-";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(29, 72);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(22, 13);
+            this.label12.TabIndex = 23;
+            this.label12.Text = "Fat";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // totalCarbsLbl
+            // 
+            this.totalCarbsLbl.AutoSize = true;
+            this.totalCarbsLbl.Location = new System.Drawing.Point(57, 124);
+            this.totalCarbsLbl.Name = "totalCarbsLbl";
+            this.totalCarbsLbl.Size = new System.Drawing.Size(10, 13);
+            this.totalCarbsLbl.TabIndex = 28;
+            this.totalCarbsLbl.Text = "-";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(7, 95);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(44, 13);
+            this.label14.TabIndex = 25;
+            this.label14.Text = "Sat. Fat";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(11, 150);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(40, 13);
+            this.label18.TabIndex = 29;
+            this.label18.Text = "Sugars";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // totalSatFatLbl
+            // 
+            this.totalSatFatLbl.AutoSize = true;
+            this.totalSatFatLbl.Location = new System.Drawing.Point(57, 95);
+            this.totalSatFatLbl.Name = "totalSatFatLbl";
+            this.totalSatFatLbl.Size = new System.Drawing.Size(10, 13);
+            this.totalSatFatLbl.TabIndex = 26;
+            this.totalSatFatLbl.Text = "-";
+            // 
+            // totalFatLbl
+            // 
+            this.totalFatLbl.AutoSize = true;
+            this.totalFatLbl.Location = new System.Drawing.Point(57, 72);
+            this.totalFatLbl.Name = "totalFatLbl";
+            this.totalFatLbl.Size = new System.Drawing.Size(10, 13);
+            this.totalFatLbl.TabIndex = 24;
+            this.totalFatLbl.Text = "-";
+            // 
+            // totalCalLbl
+            // 
+            this.totalCalLbl.AutoSize = true;
+            this.totalCalLbl.Location = new System.Drawing.Point(57, 50);
+            this.totalCalLbl.Name = "totalCalLbl";
+            this.totalCalLbl.Size = new System.Drawing.Size(10, 13);
+            this.totalCalLbl.TabIndex = 22;
+            this.totalCalLbl.Text = "-";
+            // 
             // nameTextBox
             // 
             this.nameTextBox.Location = new System.Drawing.Point(152, 228);
@@ -424,7 +425,7 @@
             this.label11.TabIndex = 22;
             this.label11.Text = "Name this item:";
             // 
-            // Form1
+            // trackerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -451,8 +452,8 @@
             this.Controls.Add(this.carbsTextBox);
             this.Controls.Add(this.addNewItemButton);
             this.Controls.Add(this.currentDayItems);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "trackerForm";
+            this.Text = "Nutrition Tracker";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
