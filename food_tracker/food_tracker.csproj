@@ -65,13 +65,9 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201708121701281_InitialCreate.cs" />
-    <Compile Include="Migrations\201708121701281_InitialCreate.Designer.cs">
-      <DependentUpon>201708121701281_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201708121735190_edit_foreignkey_data_type.cs" />
-    <Compile Include="Migrations\201708121735190_edit_foreignkey_data_type.Designer.cs">
-      <DependentUpon>201708121735190_edit_foreignkey_data_type.cs</DependentUpon>
+    <Compile Include="Migrations\201708131621422_initial.cs" />
+    <Compile Include="Migrations\201708131621422_initial.Designer.cs">
+      <DependentUpon>201708131621422_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="NutritionItem.cs" />
@@ -82,11 +78,8 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201708121701281_InitialCreate.resx">
-      <DependentUpon>201708121701281_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201708121735190_edit_foreignkey_data_type.resx">
-      <DependentUpon>201708121735190_edit_foreignkey_data_type.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201708131621422_initial.resx">
+      <DependentUpon>201708131621422_initial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

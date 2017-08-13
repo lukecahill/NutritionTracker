@@ -8,15 +8,22 @@ namespace food_tracker {
 
         TrackerContext context = new TrackerContext();
         TextBox[] textBoxes;
+        Label[] dailyTotalLabels;
 
         public trackerForm() {
             InitializeComponent();
-            this.loadData();
             textBoxes = new TextBox[] { nameTextBox, caloriesTextBox, fatTextBox, saturatesTextBox, carbsTextBox, sugarsTextBox, fibreTextBox, proteinTextBox, saltTextBox };
+            dailyTotalLabels = new Label[] { totalCalLbl, totalFatLbl, totalCarbsLbl, totalFibreLbl, totalProteinLbl, totalSatFatLbl, totalSugarsLbl, totalSaltLbl};
+            this.Shown += new EventHandler(this.loadDataEvent);
+        }
+
+        private void loadDataEvent(object sender, EventArgs e) {
+            this.loadData();
         }
 
         private void loadData() {
-            var data = context.Nutrition.ToList();
+            var day = dateTimePicker.Text.Replace(" ", "");
+            var data = context.Nutrition.Where(x => x.dayId == day).ToList();
             foreach(var item in data) {
                 currentDayItems.Items.Add(new FoodBoxItem(item.calories, item.fats, item.saturatedFats, item.carbohydrates, item.sugars, item.protein, item.salt, item.fibre, item.name));
             }
@@ -39,6 +46,7 @@ namespace food_tracker {
             var day = "";
             if(currentDayItems.Items.Count <= 0) {
                 day = dateTimePicker.Text.Replace(" ", "");
+                context.Days.Add(new WholeDay(day));
             } else {
                 day = dateTimePicker.Text.Replace(" ", "");
             }
@@ -60,7 +68,7 @@ namespace food_tracker {
             currentDayItems.Items.Add(new FoodBoxItem(nutrition.calories, nutrition.fats, nutrition.saturatedFats, 
                 nutrition.carbohydrates, nutrition.sugars, nutrition.protein, 
                 nutrition.salt, nutrition.fibre, nameTextBox.Text));
-
+            
             context.Nutrition.Add(nutrition);
             context.SaveChanges();
             
@@ -103,6 +111,12 @@ namespace food_tracker {
             }
         }
 
+        private void resetLabels() {
+            foreach (var item in dailyTotalLabels) {
+                item.Text = "-";
+            }
+        }
+
         private bool areFieldsEmpty() {
             return String.IsNullOrWhiteSpace(caloriesTextBox.Text) || String.IsNullOrWhiteSpace(fatTextBox.Text) || String.IsNullOrWhiteSpace(saturatesTextBox.Text)
                 || String.IsNullOrWhiteSpace(carbsTextBox.Text) || String.IsNullOrWhiteSpace(sugarsTextBox.Text) || String.IsNullOrWhiteSpace(fibreTextBox.Text)
@@ -111,9 +125,6 @@ namespace food_tracker {
 
         private void currentDayItems_DoubleClick(object sender, EventArgs e) {
             if(currentDayItems.SelectedIndex > -1) {
-                MessageBox.Show("");
-            }
-            try {
                 var item = (FoodBoxItem)currentDayItems.SelectedItem;
                 nameTextBox.Text = item.name;
                 caloriesTextBox.Text = item.calories.ToString();
@@ -124,9 +135,6 @@ namespace food_tracker {
                 fibreTextBox.Text = item.fibre.ToString();
                 proteinTextBox.Text = item.protein.ToString();
                 saltTextBox.Text = item.salt.ToString();
-            } catch(NullReferenceException ex) {
-                Debug.WriteLine("User clicked an empty list box item.");
-                Debug.WriteLine(ex.Message);
             }
         }
 
@@ -134,6 +142,8 @@ namespace food_tracker {
             // when the user changes the chosen date, everything should update
             this.resetFields();
             currentDayItems.Items.Clear();
+            this.resetLabels();
+            this.loadData();
         }
 
         private void caloriesTextBox_KeyPress(object sender, KeyPressEventArgs e) {
@@ -148,6 +158,7 @@ namespace food_tracker {
             MouseEventArgs me = (MouseEventArgs)e;
             if(me.Button == MouseButtons.Right) {
                 if(currentDayItems.Bounds.Contains(me.Location)) {
+                    MessageBox.Show("Right clicked");
 
                 }
             }
