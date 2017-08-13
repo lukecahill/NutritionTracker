@@ -1,5 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace food_tracker {
     public class NutritionItem {
 
@@ -15,6 +17,9 @@ namespace food_tracker {
         public double protein { get; set; }
         public double salt { get; set; }
         public double fibre { get; set; }
+
+        [ForeignKey("dayId")]
+        public WholeDay wholeDay { get; set; }
 
         [Obsolete("Only needed for serialization and materialization", true)]
         public NutritionItem() { }
