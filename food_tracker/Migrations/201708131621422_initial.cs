@@ -3,7 +3,7 @@ namespace food_tracker.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class initial : DbMigration
     {
         public override void Up()
         {
@@ -11,7 +11,7 @@ namespace food_tracker.Migrations
                 "dbo.WholeDays",
                 c => new
                     {
-                        WholeDayId = c.Int(nullable: false, identity: true),
+                        WholeDayId = c.String(nullable: false, maxLength: 128),
                         dateTime = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.WholeDayId);
@@ -22,6 +22,7 @@ namespace food_tracker.Migrations
                     {
                         NutritionItemId = c.Int(nullable: false, identity: true),
                         name = c.String(),
+                        dayId = c.String(maxLength: 128),
                         calories = c.Double(nullable: false),
                         carbohydrates = c.Double(nullable: false),
                         sugars = c.Double(nullable: false),
@@ -30,18 +31,17 @@ namespace food_tracker.Migrations
                         protein = c.Double(nullable: false),
                         salt = c.Double(nullable: false),
                         fibre = c.Double(nullable: false),
-                        WholeDay_WholeDayId = c.Int(),
                     })
                 .PrimaryKey(t => t.NutritionItemId)
-                .ForeignKey("dbo.WholeDays", t => t.WholeDay_WholeDayId)
-                .Index(t => t.WholeDay_WholeDayId);
+                .ForeignKey("dbo.WholeDays", t => t.dayId)
+                .Index(t => t.dayId);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.NutritionItems", "WholeDay_WholeDayId", "dbo.WholeDays");
-            DropIndex("dbo.NutritionItems", new[] { "WholeDay_WholeDayId" });
+            DropForeignKey("dbo.NutritionItems", "dayId", "dbo.WholeDays");
+            DropIndex("dbo.NutritionItems", new[] { "dayId" });
             DropTable("dbo.NutritionItems");
             DropTable("dbo.WholeDays");
         }

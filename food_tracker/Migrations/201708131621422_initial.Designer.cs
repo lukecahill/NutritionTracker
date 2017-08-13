@@ -7,13 +7,13 @@ namespace food_tracker.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class edit_foreignkey_data_type : IMigrationMetadata
+    public sealed partial class initial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(edit_foreignkey_data_type));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(initial));
         
         string IMigrationMetadata.Id
         {
-            get { return "201708121735190_edit_foreignkey_data_type"; }
+            get { return "201708131621422_initial"; }
         }
         
         string IMigrationMetadata.Source
