@@ -109,18 +109,6 @@ namespace food_tracker {
             return parsed;
         }
 
-        private void resetFields() {
-            foreach(var item in textBoxes) {
-                item.Clear();
-            }
-        }
-
-        private void resetLabels() {
-            foreach (var item in dailyTotalLabels) {
-                item.Text = "-";
-            }
-        }
-
         private bool areFieldsEmpty() {
             return String.IsNullOrWhiteSpace(caloriesTextBox.Text) || String.IsNullOrWhiteSpace(fatTextBox.Text) || String.IsNullOrWhiteSpace(saturatesTextBox.Text)
                 || String.IsNullOrWhiteSpace(carbsTextBox.Text) || String.IsNullOrWhiteSpace(sugarsTextBox.Text) || String.IsNullOrWhiteSpace(fibreTextBox.Text)
@@ -153,9 +141,8 @@ namespace food_tracker {
         }
         
         private void removeItem_Click(object sender, EventArgs e) {
-            // minus the values from the totals. 
-            // remove the item from the DB
-            var itemId = int.Parse(nutritionItemId.Text);
+            var selectedItem = (FoodBoxItem)currentDayItems.SelectedItem;
+            var itemId = selectedItem.nutritionId;
             var entity = context.Nutrition.FirstOrDefault(x => x.NutritionItemId == itemId);
 
             if(entity != null) {
@@ -166,10 +153,8 @@ namespace food_tracker {
                 return;
             }
             
+            this.currentDayItems.Items.Remove(this.currentDayItems.SelectedItem);
             this.resetFields();
-            this.loadData();
-            // need to actually remove this item from the list.
-            this.currentDayItems.Items.Remove(this.currentDayItems.SelectedIndex);
         }
 
         private void currentDayItems_MouseUp(object sender, MouseEventArgs e) {
@@ -183,6 +168,20 @@ namespace food_tracker {
                 }
             }
         }
+
+        #region Reset Methods
+        private void resetFields() {
+            foreach (var item in textBoxes) {
+                item.Clear();
+            }
+        }
+
+        private void resetLabels() {
+            foreach (var item in dailyTotalLabels) {
+                item.Text = "-";
+            }
+        }
+        #endregion
 
         #region Validation
         private void validateDoubleInput(KeyPressEventArgs e) {
