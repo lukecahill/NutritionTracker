@@ -10,11 +10,13 @@ namespace food_tracker {
         TrackerContext context = new TrackerContext();
         TextBox[] textBoxes;
         Label[] dailyTotalLabels;
+        bool development = true;
 
         public trackerForm() {
             InitializeComponent();
             textBoxes = new TextBox[] { nameTextBox, caloriesTextBox, fatTextBox, saturatesTextBox, carbsTextBox, sugarsTextBox, fibreTextBox, proteinTextBox, saltTextBox };
             dailyTotalLabels = new Label[] { totalCalLbl, totalFatLbl, totalCarbsLbl, totalFibreLbl, totalProteinLbl, totalSatFatLbl, totalSugarsLbl, totalSaltLbl};
+            if (development) pastItemsCombo.Visible = true;
             this.Shown += new EventHandler(this.loadDataEvent);
         }
 
@@ -27,6 +29,11 @@ namespace food_tracker {
             var data = context.Nutrition.Where(x => x.dayId == day).ToList();
             foreach(var item in data) {
                 currentDayItems.Items.Add(new FoodBoxItem(item.calories, item.fats, item.saturatedFats, item.carbohydrates, item.sugars, item.protein, item.salt, item.fibre, item.name, item.NutritionItemId));
+            }
+
+            var distinct = data.Distinct();
+            foreach(var item in distinct) {
+                pastItemsCombo.Items.Add(item.name);
             }
 
             this.showTotals();

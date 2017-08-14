@@ -68,6 +68,8 @@
             this.nutritionItemId = new System.Windows.Forms.Label();
             this.amountTextbox = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
+            this.pastItemsCombo = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.menuItemContext.SuspendLayout();
             this.SuspendLayout();
@@ -77,14 +79,14 @@
             this.currentDayItems.FormattingEnabled = true;
             this.currentDayItems.Location = new System.Drawing.Point(12, 55);
             this.currentDayItems.Name = "currentDayItems";
-            this.currentDayItems.Size = new System.Drawing.Size(383, 147);
+            this.currentDayItems.Size = new System.Drawing.Size(383, 121);
             this.currentDayItems.TabIndex = 0;
             this.currentDayItems.DoubleClick += new System.EventHandler(this.currentDayItems_DoubleClick);
             this.currentDayItems.MouseUp += new System.Windows.Forms.MouseEventHandler(this.currentDayItems_MouseUp);
             // 
             // addNewItemButton
             // 
-            this.addNewItemButton.Location = new System.Drawing.Point(295, 336);
+            this.addNewItemButton.Location = new System.Drawing.Point(295, 343);
             this.addNewItemButton.Name = "addNewItemButton";
             this.addNewItemButton.Size = new System.Drawing.Size(100, 20);
             this.addNewItemButton.TabIndex = 1;
@@ -94,7 +96,7 @@
             // 
             // carbsTextBox
             // 
-            this.carbsTextBox.Location = new System.Drawing.Point(152, 260);
+            this.carbsTextBox.Location = new System.Drawing.Point(152, 267);
             this.carbsTextBox.Name = "carbsTextBox";
             this.carbsTextBox.Size = new System.Drawing.Size(100, 20);
             this.carbsTextBox.TabIndex = 2;
@@ -102,7 +104,7 @@
             // 
             // caloriesTextBox
             // 
-            this.caloriesTextBox.Location = new System.Drawing.Point(12, 260);
+            this.caloriesTextBox.Location = new System.Drawing.Point(12, 267);
             this.caloriesTextBox.Name = "caloriesTextBox";
             this.caloriesTextBox.Size = new System.Drawing.Size(100, 20);
             this.caloriesTextBox.TabIndex = 3;
@@ -110,7 +112,7 @@
             // 
             // fatTextBox
             // 
-            this.fatTextBox.Location = new System.Drawing.Point(12, 296);
+            this.fatTextBox.Location = new System.Drawing.Point(12, 303);
             this.fatTextBox.Name = "fatTextBox";
             this.fatTextBox.Size = new System.Drawing.Size(100, 20);
             this.fatTextBox.TabIndex = 4;
@@ -118,7 +120,7 @@
             // 
             // saturatesTextBox
             // 
-            this.saturatesTextBox.Location = new System.Drawing.Point(12, 336);
+            this.saturatesTextBox.Location = new System.Drawing.Point(12, 343);
             this.saturatesTextBox.Name = "saturatesTextBox";
             this.saturatesTextBox.Size = new System.Drawing.Size(100, 20);
             this.saturatesTextBox.TabIndex = 5;
@@ -126,7 +128,7 @@
             // 
             // saltTextBox
             // 
-            this.saltTextBox.Location = new System.Drawing.Point(295, 296);
+            this.saltTextBox.Location = new System.Drawing.Point(295, 303);
             this.saltTextBox.Name = "saltTextBox";
             this.saltTextBox.Size = new System.Drawing.Size(100, 20);
             this.saltTextBox.TabIndex = 6;
@@ -134,7 +136,7 @@
             // 
             // sugarsTextBox
             // 
-            this.sugarsTextBox.Location = new System.Drawing.Point(152, 296);
+            this.sugarsTextBox.Location = new System.Drawing.Point(152, 303);
             this.sugarsTextBox.Name = "sugarsTextBox";
             this.sugarsTextBox.Size = new System.Drawing.Size(100, 20);
             this.sugarsTextBox.TabIndex = 8;
@@ -142,7 +144,7 @@
             // 
             // proteinTextBox
             // 
-            this.proteinTextBox.Location = new System.Drawing.Point(295, 260);
+            this.proteinTextBox.Location = new System.Drawing.Point(295, 267);
             this.proteinTextBox.Name = "proteinTextBox";
             this.proteinTextBox.Size = new System.Drawing.Size(100, 20);
             this.proteinTextBox.TabIndex = 9;
@@ -150,7 +152,7 @@
             // 
             // fibreTextBox
             // 
-            this.fibreTextBox.Location = new System.Drawing.Point(152, 336);
+            this.fibreTextBox.Location = new System.Drawing.Point(152, 343);
             this.fibreTextBox.Name = "fibreTextBox";
             this.fibreTextBox.Size = new System.Drawing.Size(100, 20);
             this.fibreTextBox.TabIndex = 10;
@@ -159,7 +161,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 244);
+            this.label1.Location = new System.Drawing.Point(9, 251);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 13);
             this.label1.TabIndex = 11;
@@ -168,7 +170,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 283);
+            this.label2.Location = new System.Drawing.Point(9, 290);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(22, 13);
             this.label2.TabIndex = 12;
@@ -177,7 +179,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 320);
+            this.label3.Location = new System.Drawing.Point(12, 327);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(71, 13);
             this.label3.TabIndex = 13;
@@ -186,7 +188,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(149, 244);
+            this.label4.Location = new System.Drawing.Point(149, 251);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(75, 13);
             this.label4.TabIndex = 14;
@@ -195,7 +197,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(149, 283);
+            this.label5.Location = new System.Drawing.Point(149, 290);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(40, 13);
             this.label5.TabIndex = 15;
@@ -204,7 +206,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(149, 320);
+            this.label6.Location = new System.Drawing.Point(149, 327);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(30, 13);
             this.label6.TabIndex = 16;
@@ -213,7 +215,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(292, 244);
+            this.label7.Location = new System.Drawing.Point(292, 251);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(40, 13);
             this.label7.TabIndex = 17;
@@ -222,7 +224,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(292, 283);
+            this.label8.Location = new System.Drawing.Point(292, 290);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(25, 13);
             this.label8.TabIndex = 18;
@@ -258,7 +260,7 @@
             this.panel1.Controls.Add(this.totalCalLbl);
             this.panel1.Location = new System.Drawing.Point(401, 55);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(244, 304);
+            this.panel1.Size = new System.Drawing.Size(244, 308);
             this.panel1.TabIndex = 20;
             // 
             // label16
@@ -425,7 +427,7 @@
             // 
             // nameTextBox
             // 
-            this.nameTextBox.Location = new System.Drawing.Point(89, 208);
+            this.nameTextBox.Location = new System.Drawing.Point(89, 215);
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(163, 20);
             this.nameTextBox.TabIndex = 21;
@@ -433,11 +435,11 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(9, 211);
+            this.label11.Location = new System.Drawing.Point(9, 218);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(79, 13);
+            this.label11.Size = new System.Drawing.Size(76, 13);
             this.label11.TabIndex = 22;
-            this.label11.Text = "Name this item:";
+            this.label11.Text = "Name this item";
             // 
             // menuItemContext
             // 
@@ -465,7 +467,7 @@
             // 
             // amountTextbox
             // 
-            this.amountTextbox.Location = new System.Drawing.Point(323, 208);
+            this.amountTextbox.Location = new System.Drawing.Point(323, 215);
             this.amountTextbox.Name = "amountTextbox";
             this.amountTextbox.Size = new System.Drawing.Size(72, 20);
             this.amountTextbox.TabIndex = 24;
@@ -473,17 +475,37 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(274, 211);
+            this.label13.Location = new System.Drawing.Point(274, 218);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(43, 13);
             this.label13.TabIndex = 25;
             this.label13.Text = "Amount";
             // 
+            // pastItemsCombo
+            // 
+            this.pastItemsCombo.FormattingEnabled = true;
+            this.pastItemsCombo.Location = new System.Drawing.Point(89, 182);
+            this.pastItemsCombo.Name = "pastItemsCombo";
+            this.pastItemsCombo.Size = new System.Drawing.Size(306, 21);
+            this.pastItemsCombo.TabIndex = 26;
+            this.pastItemsCombo.Visible = false;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(8, 185);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(80, 13);
+            this.label15.TabIndex = 27;
+            this.label15.Text = "Choose an item";
+            // 
             // trackerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(657, 366);
+            this.ClientSize = new System.Drawing.Size(657, 368);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.pastItemsCombo);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.amountTextbox);
             this.Controls.Add(this.nutritionItemId);
@@ -567,6 +589,8 @@
         private System.Windows.Forms.Label nutritionItemId;
         private System.Windows.Forms.TextBox amountTextbox;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.ComboBox pastItemsCombo;
+        private System.Windows.Forms.Label label15;
     }
 }
 
