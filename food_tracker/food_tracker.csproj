@@ -65,6 +65,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Md5Hashing.cs" />
     <Compile Include="Migrations\201708131621422_initial.cs" />
     <Compile Include="Migrations\201708131621422_initial.Designer.cs">
       <DependentUpon>201708131621422_initial.cs</DependentUpon>

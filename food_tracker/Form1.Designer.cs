@@ -23,6 +23,7 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             this.currentDayItems = new System.Windows.Forms.ListBox();
             this.addNewItemButton = new System.Windows.Forms.Button();
             this.carbsTextBox = new System.Windows.Forms.TextBox();
@@ -62,7 +63,11 @@
             this.totalCalLbl = new System.Windows.Forms.Label();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.removeItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nutritionItemId = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // currentDayItems
@@ -72,8 +77,8 @@
             this.currentDayItems.Name = "currentDayItems";
             this.currentDayItems.Size = new System.Drawing.Size(383, 147);
             this.currentDayItems.TabIndex = 0;
-            this.currentDayItems.Click += new System.EventHandler(this.currentDayItems_Click);
             this.currentDayItems.DoubleClick += new System.EventHandler(this.currentDayItems_DoubleClick);
+            this.currentDayItems.MouseUp += new System.Windows.Forms.MouseEventHandler(this.currentDayItems_MouseUp);
             // 
             // addNewItemButton
             // 
@@ -91,6 +96,7 @@
             this.carbsTextBox.Name = "carbsTextBox";
             this.carbsTextBox.Size = new System.Drawing.Size(100, 20);
             this.carbsTextBox.TabIndex = 2;
+            this.carbsTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.carbsTextBox_KeyPress);
             // 
             // caloriesTextBox
             // 
@@ -106,6 +112,7 @@
             this.fatTextBox.Name = "fatTextBox";
             this.fatTextBox.Size = new System.Drawing.Size(100, 20);
             this.fatTextBox.TabIndex = 4;
+            this.fatTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.fatTextBox_KeyPress);
             // 
             // saturatesTextBox
             // 
@@ -113,6 +120,7 @@
             this.saturatesTextBox.Name = "saturatesTextBox";
             this.saturatesTextBox.Size = new System.Drawing.Size(100, 20);
             this.saturatesTextBox.TabIndex = 5;
+            this.saturatesTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.saturatesTextBox_KeyPress);
             // 
             // saltTextBox
             // 
@@ -120,6 +128,7 @@
             this.saltTextBox.Name = "saltTextBox";
             this.saltTextBox.Size = new System.Drawing.Size(100, 20);
             this.saltTextBox.TabIndex = 6;
+            this.saltTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.saltTextBox_KeyPress);
             // 
             // sugarsTextBox
             // 
@@ -127,6 +136,7 @@
             this.sugarsTextBox.Name = "sugarsTextBox";
             this.sugarsTextBox.Size = new System.Drawing.Size(100, 20);
             this.sugarsTextBox.TabIndex = 8;
+            this.sugarsTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.sugarsTextBox_KeyPress);
             // 
             // proteinTextBox
             // 
@@ -134,6 +144,7 @@
             this.proteinTextBox.Name = "proteinTextBox";
             this.proteinTextBox.Size = new System.Drawing.Size(100, 20);
             this.proteinTextBox.TabIndex = 9;
+            this.proteinTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.proteinTextBox_KeyPress);
             // 
             // fibreTextBox
             // 
@@ -141,6 +152,7 @@
             this.fibreTextBox.Name = "fibreTextBox";
             this.fibreTextBox.Size = new System.Drawing.Size(100, 20);
             this.fibreTextBox.TabIndex = 10;
+            this.fibreTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.fibreTextBox_KeyPress);
             // 
             // label1
             // 
@@ -425,11 +437,35 @@
             this.label11.TabIndex = 22;
             this.label11.Text = "Name this item:";
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.removeItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(118, 26);
+            // 
+            // removeItem
+            // 
+            this.removeItem.Name = "removeItem";
+            this.removeItem.Size = new System.Drawing.Size(117, 22);
+            this.removeItem.Text = "Remove";
+            this.removeItem.Click += new System.EventHandler(this.removeItem_Click);
+            // 
+            // nutritionItemId
+            // 
+            this.nutritionItemId.AutoSize = true;
+            this.nutritionItemId.Location = new System.Drawing.Point(12, 231);
+            this.nutritionItemId.Name = "nutritionItemId";
+            this.nutritionItemId.Size = new System.Drawing.Size(58, 13);
+            this.nutritionItemId.TabIndex = 23;
+            this.nutritionItemId.Text = "itemIdHere";
+            // 
             // trackerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(657, 391);
+            this.Controls.Add(this.nutritionItemId);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.nameTextBox);
             this.Controls.Add(this.panel1);
@@ -452,10 +488,13 @@
             this.Controls.Add(this.carbsTextBox);
             this.Controls.Add(this.addNewItemButton);
             this.Controls.Add(this.currentDayItems);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
             this.Name = "trackerForm";
             this.Text = "Nutrition Tracker";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -502,6 +541,9 @@
 		private System.Windows.Forms.Label totalCalLbl;
 		private System.Windows.Forms.TextBox nameTextBox;
 		private System.Windows.Forms.Label label11;
-	}
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem removeItem;
+        private System.Windows.Forms.Label nutritionItemId;
+    }
 }
 

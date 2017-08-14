@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
 
 namespace food_tracker {
     public partial class trackerForm : Form {
@@ -22,10 +23,10 @@ namespace food_tracker {
         }
 
         private void loadData() {
-            var day = dateTimePicker.Text.Replace(" ", "");
+            var day = Md5Hashing.CreateMD5(dateTimePicker.Text.Replace(" ", ""));
             var data = context.Nutrition.Where(x => x.dayId == day).ToList();
             foreach(var item in data) {
-                currentDayItems.Items.Add(new FoodBoxItem(item.calories, item.fats, item.saturatedFats, item.carbohydrates, item.sugars, item.protein, item.salt, item.fibre, item.name));
+                currentDayItems.Items.Add(new FoodBoxItem(item.calories, item.fats, item.saturatedFats, item.carbohydrates, item.sugars, item.protein, item.salt, item.fibre, item.name, item.NutritionItemId));
             }
 
             this.showTotals();
@@ -43,15 +44,14 @@ namespace food_tracker {
                 return;
             }
 
-            var day = "";
-            if(currentDayItems.Items.Count <= 0) {
-                day = dateTimePicker.Text.Replace(" ", "");
-                context.Days.Add(new WholeDay(day));
-            } else {
-                day = dateTimePicker.Text.Replace(" ", "");
-            }
+            var day = Md5Hashing.CreateMD5(dateTimePicker.Text.Replace(" ", ""));
 
-            // need to persist to database for the past days and current day for reloading - below is an exple of how the totals will be calculated.
+            var dayExists = context.Days.FirstOrDefault(x => x.WholeDayId == day);
+            if(dayExists == null) {
+                context.Days.Add(new WholeDay(day));
+            }
+            
+            // need to persist to database for the past days and current day for reloading - below is an example of how the totals will be calculated.
             var nutrition = new NutritionItem(
                 nameTextBox.Text,
                 day,
@@ -64,13 +64,13 @@ namespace food_tracker {
                 parseTextBoxForDouble(saltTextBox),
                 parseTextBoxForDouble(fibreTextBox)
             );
-
-            currentDayItems.Items.Add(new FoodBoxItem(nutrition.calories, nutrition.fats, nutrition.saturatedFats, 
-                nutrition.carbohydrates, nutrition.sugars, nutrition.protein, 
-                nutrition.salt, nutrition.fibre, nameTextBox.Text));
             
             context.Nutrition.Add(nutrition);
             context.SaveChanges();
+
+            currentDayItems.Items.Add(new FoodBoxItem(nutrition.calories, nutrition.fats, nutrition.saturatedFats, 
+                nutrition.carbohydrates, nutrition.sugars, nutrition.protein, 
+                nutrition.salt, nutrition.fibre, nameTextBox.Text, nutrition.NutritionItemId));
             
             this.showTotals();
             this.resetFields();
@@ -101,7 +101,11 @@ namespace food_tracker {
         }
 
         private double parseTextBoxForDouble(TextBox text) {
-            var parsed = double.Parse(text.Text);
+            var parsed = 0.0D;
+            if(double.TryParse(text.Text, out parsed)) {
+                return parsed;
+            }
+            MessageBox.Show("Error when attempting to parse integer values");
             return parsed;
         }
 
@@ -135,6 +139,8 @@ namespace food_tracker {
                 fibreTextBox.Text = item.fibre.ToString();
                 proteinTextBox.Text = item.protein.ToString();
                 saltTextBox.Text = item.salt.ToString();
+
+                nutritionItemId.Text = item.nutritionId.ToString();
             }
         }
 
@@ -147,21 +153,69 @@ namespace food_tracker {
         }
 
         private void caloriesTextBox_KeyPress(object sender, KeyPressEventArgs e) {
-            // validate that a number was entered 
-            //if(!char.IsDigit(e.KeyChar) || !char.IsControl(e.KeyChar)) {
-            //    e.Handled = true;
-            //    return;
-            //}
+            this.validateDoubleInput(e);
         }
-        
-        private void currentDayItems_Click(object sender, EventArgs e) {
-            MouseEventArgs me = (MouseEventArgs)e;
-            if(me.Button == MouseButtons.Right) {
-                if(currentDayItems.Bounds.Contains(me.Location)) {
-                    MessageBox.Show("Right clicked");
 
-                }
+        private void validateDoubleInput(KeyPressEventArgs e) {
+            if (Regex.IsMatch(e.KeyChar.ToString(), @"[^0-9.]")) {
+                e.Handled = true;
             }
+        }
+
+        private void removeItem_Click(object sender, EventArgs e) {
+            // minus the values from the totals. 
+            // remove the item from the DB
+            var itemId = int.Parse(nutritionItemId.Text);
+            var entity = context.Nutrition.FirstOrDefault(x => x.NutritionItemId == itemId);
+
+            if(entity != null) {
+                context.Nutrition.Remove(entity);
+                context.SaveChanges();
+            } else {
+                MessageBox.Show("Could not delete that item.", "Error deleting item", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            
+            this.resetFields();
+            this.loadData();
+            // need to actually remove this item from the list.
+            this.currentDayItems.Items.Remove(this.currentDayItems.SelectedIndex);
+        }
+
+        private void currentDayItems_MouseUp(object sender, MouseEventArgs e) {
+            if(e.Button == MouseButtons.Right) {
+                contextMenuStrip1.Show(Cursor.Position);
+                contextMenuStrip1.Visible = true;
+                var index = this.currentDayItems.IndexFromPoint(Cursor.Position);
+            }
+        }
+
+        private void fatTextBox_KeyPress(object sender, KeyPressEventArgs e) {
+            this.validateDoubleInput(e);
+        }
+
+        private void saturatesTextBox_KeyPress(object sender, KeyPressEventArgs e) {
+            this.validateDoubleInput(e);
+        }
+
+        private void carbsTextBox_KeyPress(object sender, KeyPressEventArgs e) {
+            this.validateDoubleInput(e);
+        }
+
+        private void sugarsTextBox_KeyPress(object sender, KeyPressEventArgs e) {
+            this.validateDoubleInput(e);
+        }
+
+        private void fibreTextBox_KeyPress(object sender, KeyPressEventArgs e) {
+            this.validateDoubleInput(e);
+        }
+
+        private void proteinTextBox_KeyPress(object sender, KeyPressEventArgs e) {
+            this.validateDoubleInput(e);
+        }
+
+        private void saltTextBox_KeyPress(object sender, KeyPressEventArgs e) {
+            this.validateDoubleInput(e);
         }
     }
 }
