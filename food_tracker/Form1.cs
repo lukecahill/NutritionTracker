@@ -151,17 +151,7 @@ namespace food_tracker {
             this.resetLabels();
             this.loadData();
         }
-
-        private void caloriesTextBox_KeyPress(object sender, KeyPressEventArgs e) {
-            this.validateDoubleInput(e);
-        }
-
-        private void validateDoubleInput(KeyPressEventArgs e) {
-            if (Regex.IsMatch(e.KeyChar.ToString(), @"[^0-9.]")) {
-                e.Handled = true;
-            }
-        }
-
+        
         private void removeItem_Click(object sender, EventArgs e) {
             // minus the values from the totals. 
             // remove the item from the DB
@@ -188,6 +178,17 @@ namespace food_tracker {
                 contextMenuStrip1.Visible = true;
                 var index = this.currentDayItems.IndexFromPoint(Cursor.Position);
             }
+        }
+
+        #region Validation
+        private void validateDoubleInput(KeyPressEventArgs e) {
+            if (Regex.IsMatch(e.KeyChar.ToString(), @"[^0-9.]")) {
+                e.Handled = true;
+            }
+        }
+
+        private void caloriesTextBox_KeyPress(object sender, KeyPressEventArgs e) {
+            this.validateDoubleInput(e);
         }
 
         private void fatTextBox_KeyPress(object sender, KeyPressEventArgs e) {
@@ -217,5 +218,7 @@ namespace food_tracker {
         private void saltTextBox_KeyPress(object sender, KeyPressEventArgs e) {
             this.validateDoubleInput(e);
         }
+
+        #endregion
     }
 }
