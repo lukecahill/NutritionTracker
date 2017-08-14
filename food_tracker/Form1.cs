@@ -50,6 +50,7 @@ namespace food_tracker {
             if(dayExists == null) {
                 context.Days.Add(new WholeDay(day));
             }
+            dayExists = null;
             
             // need to persist to database for the past days and current day for reloading - below is an example of how the totals will be calculated.
             var nutrition = new NutritionItem(
