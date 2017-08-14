@@ -63,11 +63,11 @@
             this.totalCalLbl = new System.Windows.Forms.Label();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.menuItemContext = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.removeItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nutritionItemId = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            this.contextMenuStrip1.SuspendLayout();
+            this.menuItemContext.SuspendLayout();
             this.SuspendLayout();
             // 
             // currentDayItems
@@ -437,17 +437,17 @@
             this.label11.TabIndex = 22;
             this.label11.Text = "Name this item:";
             // 
-            // contextMenuStrip1
+            // menuItemContext
             // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItemContext.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.removeItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(118, 26);
+            this.menuItemContext.Name = "contextMenuStrip1";
+            this.menuItemContext.Size = new System.Drawing.Size(153, 48);
             // 
             // removeItem
             // 
             this.removeItem.Name = "removeItem";
-            this.removeItem.Size = new System.Drawing.Size(117, 22);
+            this.removeItem.Size = new System.Drawing.Size(152, 22);
             this.removeItem.Text = "Remove";
             this.removeItem.Click += new System.EventHandler(this.removeItem_Click);
             // 
@@ -494,7 +494,7 @@
             this.Text = "Nutrition Tracker";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.contextMenuStrip1.ResumeLayout(false);
+            this.menuItemContext.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -541,7 +541,7 @@
 		private System.Windows.Forms.Label totalCalLbl;
 		private System.Windows.Forms.TextBox nameTextBox;
 		private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ContextMenuStrip menuItemContext;
         private System.Windows.Forms.ToolStripMenuItem removeItem;
         private System.Windows.Forms.Label nutritionItemId;
     }

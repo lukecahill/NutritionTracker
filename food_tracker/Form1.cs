@@ -174,9 +174,13 @@ namespace food_tracker {
 
         private void currentDayItems_MouseUp(object sender, MouseEventArgs e) {
             if(e.Button == MouseButtons.Right) {
-                contextMenuStrip1.Show(Cursor.Position);
-                contextMenuStrip1.Visible = true;
-                var index = this.currentDayItems.IndexFromPoint(Cursor.Position);
+
+                int index = this.currentDayItems.IndexFromPoint(e.Location);
+                if (index != ListBox.NoMatches) {
+                    currentDayItems.SelectedIndex = index;
+                    menuItemContext.Show(Cursor.Position);
+                    menuItemContext.Visible = true;
+                }
             }
         }
 
