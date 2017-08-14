@@ -153,14 +153,34 @@ namespace food_tracker {
             //    return;
             //}
         }
-        
-        private void currentDayItems_Click(object sender, EventArgs e) {
-            MouseEventArgs me = (MouseEventArgs)e;
-            if(me.Button == MouseButtons.Right) {
-                if(currentDayItems.Bounds.Contains(me.Location)) {
-                    MessageBox.Show("Right clicked");
 
-                }
+        private void removeItem_Click(object sender, EventArgs e) {
+            // minus the values from the totals. 
+            // remove the item from the DB
+            var day = dateTimePicker.Text.Replace(" ", "");
+            context.Nutrition.Remove(new NutritionItem(
+                nameTextBox.Text,
+                day,
+                parseTextBoxForDouble(caloriesTextBox),
+                parseTextBoxForDouble(carbsTextBox),
+                parseTextBoxForDouble(sugarsTextBox),
+                parseTextBoxForDouble(fatTextBox),
+                parseTextBoxForDouble(saturatesTextBox),
+                parseTextBoxForDouble(proteinTextBox),
+                parseTextBoxForDouble(saltTextBox),
+                parseTextBoxForDouble(fibreTextBox)
+            ));
+
+            this.resetFields();
+            this.loadData();
+            context.SaveChanges();
+        }
+
+        private void currentDayItems_MouseUp(object sender, MouseEventArgs e) {
+            if(e.Button == MouseButtons.Right) {
+                contextMenuStrip1.Show(Cursor.Position);
+                contextMenuStrip1.Visible = true;
+                var index = this.currentDayItems.IndexFromPoint(Cursor.Position);
             }
         }
     }

@@ -23,6 +23,7 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             this.currentDayItems = new System.Windows.Forms.ListBox();
             this.addNewItemButton = new System.Windows.Forms.Button();
             this.carbsTextBox = new System.Windows.Forms.TextBox();
@@ -62,7 +63,10 @@
             this.totalCalLbl = new System.Windows.Forms.Label();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.removeItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // currentDayItems
@@ -72,8 +76,8 @@
             this.currentDayItems.Name = "currentDayItems";
             this.currentDayItems.Size = new System.Drawing.Size(383, 147);
             this.currentDayItems.TabIndex = 0;
-            this.currentDayItems.Click += new System.EventHandler(this.currentDayItems_Click);
             this.currentDayItems.DoubleClick += new System.EventHandler(this.currentDayItems_DoubleClick);
+            this.currentDayItems.MouseUp += new System.Windows.Forms.MouseEventHandler(this.currentDayItems_MouseUp);
             // 
             // addNewItemButton
             // 
@@ -425,6 +429,20 @@
             this.label11.TabIndex = 22;
             this.label11.Text = "Name this item:";
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.removeItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 48);
+            // 
+            // removeItem
+            // 
+            this.removeItem.Name = "removeItem";
+            this.removeItem.Size = new System.Drawing.Size(152, 22);
+            this.removeItem.Text = "Remove";
+            this.removeItem.Click += new System.EventHandler(this.removeItem_Click);
+            // 
             // trackerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -452,10 +470,13 @@
             this.Controls.Add(this.carbsTextBox);
             this.Controls.Add(this.addNewItemButton);
             this.Controls.Add(this.currentDayItems);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
             this.Name = "trackerForm";
             this.Text = "Nutrition Tracker";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -502,6 +523,8 @@
 		private System.Windows.Forms.Label totalCalLbl;
 		private System.Windows.Forms.TextBox nameTextBox;
 		private System.Windows.Forms.Label label11;
-	}
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem removeItem;
+    }
 }
 
