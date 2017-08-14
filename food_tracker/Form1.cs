@@ -172,6 +172,15 @@ namespace food_tracker {
             }
         }
 
+        private bool addNewNutritionItem() {
+            // this will be saving a new item to the database.
+            // allows the user to choose from commonly consumed items.
+            // required new classes - do not have to be explicity linked 
+            //      e.g. a dropdown of these items which then populates the textboxes allowing the user to change before adding. 
+
+            return false;
+        }
+
         #region Reset Methods
         private void resetFields() {
             foreach (var item in textBoxes) {
