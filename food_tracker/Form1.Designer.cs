@@ -66,6 +66,8 @@
             this.menuItemContext = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.removeItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nutritionItemId = new System.Windows.Forms.Label();
+            this.amountTextbox = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.menuItemContext.SuspendLayout();
             this.SuspendLayout();
@@ -73,7 +75,7 @@
             // currentDayItems
             // 
             this.currentDayItems.FormattingEnabled = true;
-            this.currentDayItems.Location = new System.Drawing.Point(12, 75);
+            this.currentDayItems.Location = new System.Drawing.Point(12, 55);
             this.currentDayItems.Name = "currentDayItems";
             this.currentDayItems.Size = new System.Drawing.Size(383, 147);
             this.currentDayItems.TabIndex = 0;
@@ -82,7 +84,7 @@
             // 
             // addNewItemButton
             // 
-            this.addNewItemButton.Location = new System.Drawing.Point(295, 356);
+            this.addNewItemButton.Location = new System.Drawing.Point(295, 336);
             this.addNewItemButton.Name = "addNewItemButton";
             this.addNewItemButton.Size = new System.Drawing.Size(100, 20);
             this.addNewItemButton.TabIndex = 1;
@@ -92,7 +94,7 @@
             // 
             // carbsTextBox
             // 
-            this.carbsTextBox.Location = new System.Drawing.Point(152, 280);
+            this.carbsTextBox.Location = new System.Drawing.Point(152, 260);
             this.carbsTextBox.Name = "carbsTextBox";
             this.carbsTextBox.Size = new System.Drawing.Size(100, 20);
             this.carbsTextBox.TabIndex = 2;
@@ -100,7 +102,7 @@
             // 
             // caloriesTextBox
             // 
-            this.caloriesTextBox.Location = new System.Drawing.Point(12, 280);
+            this.caloriesTextBox.Location = new System.Drawing.Point(12, 260);
             this.caloriesTextBox.Name = "caloriesTextBox";
             this.caloriesTextBox.Size = new System.Drawing.Size(100, 20);
             this.caloriesTextBox.TabIndex = 3;
@@ -108,7 +110,7 @@
             // 
             // fatTextBox
             // 
-            this.fatTextBox.Location = new System.Drawing.Point(12, 316);
+            this.fatTextBox.Location = new System.Drawing.Point(12, 296);
             this.fatTextBox.Name = "fatTextBox";
             this.fatTextBox.Size = new System.Drawing.Size(100, 20);
             this.fatTextBox.TabIndex = 4;
@@ -116,7 +118,7 @@
             // 
             // saturatesTextBox
             // 
-            this.saturatesTextBox.Location = new System.Drawing.Point(12, 356);
+            this.saturatesTextBox.Location = new System.Drawing.Point(12, 336);
             this.saturatesTextBox.Name = "saturatesTextBox";
             this.saturatesTextBox.Size = new System.Drawing.Size(100, 20);
             this.saturatesTextBox.TabIndex = 5;
@@ -124,7 +126,7 @@
             // 
             // saltTextBox
             // 
-            this.saltTextBox.Location = new System.Drawing.Point(295, 316);
+            this.saltTextBox.Location = new System.Drawing.Point(295, 296);
             this.saltTextBox.Name = "saltTextBox";
             this.saltTextBox.Size = new System.Drawing.Size(100, 20);
             this.saltTextBox.TabIndex = 6;
@@ -132,7 +134,7 @@
             // 
             // sugarsTextBox
             // 
-            this.sugarsTextBox.Location = new System.Drawing.Point(152, 316);
+            this.sugarsTextBox.Location = new System.Drawing.Point(152, 296);
             this.sugarsTextBox.Name = "sugarsTextBox";
             this.sugarsTextBox.Size = new System.Drawing.Size(100, 20);
             this.sugarsTextBox.TabIndex = 8;
@@ -140,7 +142,7 @@
             // 
             // proteinTextBox
             // 
-            this.proteinTextBox.Location = new System.Drawing.Point(295, 280);
+            this.proteinTextBox.Location = new System.Drawing.Point(295, 260);
             this.proteinTextBox.Name = "proteinTextBox";
             this.proteinTextBox.Size = new System.Drawing.Size(100, 20);
             this.proteinTextBox.TabIndex = 9;
@@ -148,7 +150,7 @@
             // 
             // fibreTextBox
             // 
-            this.fibreTextBox.Location = new System.Drawing.Point(152, 356);
+            this.fibreTextBox.Location = new System.Drawing.Point(152, 336);
             this.fibreTextBox.Name = "fibreTextBox";
             this.fibreTextBox.Size = new System.Drawing.Size(100, 20);
             this.fibreTextBox.TabIndex = 10;
@@ -157,7 +159,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 264);
+            this.label1.Location = new System.Drawing.Point(9, 244);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 13);
             this.label1.TabIndex = 11;
@@ -166,7 +168,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 303);
+            this.label2.Location = new System.Drawing.Point(9, 283);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(22, 13);
             this.label2.TabIndex = 12;
@@ -175,7 +177,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 340);
+            this.label3.Location = new System.Drawing.Point(12, 320);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(71, 13);
             this.label3.TabIndex = 13;
@@ -184,7 +186,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(149, 264);
+            this.label4.Location = new System.Drawing.Point(149, 244);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(75, 13);
             this.label4.TabIndex = 14;
@@ -193,7 +195,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(149, 303);
+            this.label5.Location = new System.Drawing.Point(149, 283);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(40, 13);
             this.label5.TabIndex = 15;
@@ -202,7 +204,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(149, 340);
+            this.label6.Location = new System.Drawing.Point(149, 320);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(30, 13);
             this.label6.TabIndex = 16;
@@ -211,7 +213,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(292, 264);
+            this.label7.Location = new System.Drawing.Point(292, 244);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(40, 13);
             this.label7.TabIndex = 17;
@@ -220,7 +222,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(292, 303);
+            this.label8.Location = new System.Drawing.Point(292, 283);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(25, 13);
             this.label8.TabIndex = 18;
@@ -228,7 +230,7 @@
             // 
             // dateTimePicker
             // 
-            this.dateTimePicker.Location = new System.Drawing.Point(12, 32);
+            this.dateTimePicker.Location = new System.Drawing.Point(12, 12);
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.Size = new System.Drawing.Size(633, 20);
             this.dateTimePicker.TabIndex = 19;
@@ -254,7 +256,7 @@
             this.panel1.Controls.Add(this.totalSatFatLbl);
             this.panel1.Controls.Add(this.totalFatLbl);
             this.panel1.Controls.Add(this.totalCalLbl);
-            this.panel1.Location = new System.Drawing.Point(401, 75);
+            this.panel1.Location = new System.Drawing.Point(401, 55);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(244, 304);
             this.panel1.TabIndex = 20;
@@ -423,15 +425,15 @@
             // 
             // nameTextBox
             // 
-            this.nameTextBox.Location = new System.Drawing.Point(152, 228);
+            this.nameTextBox.Location = new System.Drawing.Point(89, 208);
             this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(243, 20);
+            this.nameTextBox.Size = new System.Drawing.Size(163, 20);
             this.nameTextBox.TabIndex = 21;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(67, 231);
+            this.label11.Location = new System.Drawing.Point(9, 211);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(79, 13);
             this.label11.TabIndex = 22;
@@ -442,29 +444,48 @@
             this.menuItemContext.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.removeItem});
             this.menuItemContext.Name = "contextMenuStrip1";
-            this.menuItemContext.Size = new System.Drawing.Size(153, 48);
+            this.menuItemContext.Size = new System.Drawing.Size(118, 26);
             // 
             // removeItem
             // 
             this.removeItem.Name = "removeItem";
-            this.removeItem.Size = new System.Drawing.Size(152, 22);
+            this.removeItem.Size = new System.Drawing.Size(117, 22);
             this.removeItem.Text = "Remove";
             this.removeItem.Click += new System.EventHandler(this.removeItem_Click);
             // 
             // nutritionItemId
             // 
             this.nutritionItemId.AutoSize = true;
-            this.nutritionItemId.Location = new System.Drawing.Point(12, 231);
+            this.nutritionItemId.Location = new System.Drawing.Point(12, 35);
             this.nutritionItemId.Name = "nutritionItemId";
             this.nutritionItemId.Size = new System.Drawing.Size(58, 13);
             this.nutritionItemId.TabIndex = 23;
             this.nutritionItemId.Text = "itemIdHere";
+            this.nutritionItemId.Visible = false;
+            // 
+            // amountTextbox
+            // 
+            this.amountTextbox.Location = new System.Drawing.Point(323, 208);
+            this.amountTextbox.Name = "amountTextbox";
+            this.amountTextbox.Size = new System.Drawing.Size(72, 20);
+            this.amountTextbox.TabIndex = 24;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(274, 211);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(43, 13);
+            this.label13.TabIndex = 25;
+            this.label13.Text = "Amount";
             // 
             // trackerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(657, 391);
+            this.ClientSize = new System.Drawing.Size(657, 366);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.amountTextbox);
             this.Controls.Add(this.nutritionItemId);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.nameTextBox);
@@ -544,6 +565,8 @@
         private System.Windows.Forms.ContextMenuStrip menuItemContext;
         private System.Windows.Forms.ToolStripMenuItem removeItem;
         private System.Windows.Forms.Label nutritionItemId;
+        private System.Windows.Forms.TextBox amountTextbox;
+        private System.Windows.Forms.Label label13;
     }
 }
 

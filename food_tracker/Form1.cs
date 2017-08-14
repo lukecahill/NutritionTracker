@@ -69,9 +69,11 @@ namespace food_tracker {
             context.Nutrition.Add(nutrition);
             context.SaveChanges();
 
+            var name = nameTextBox.Text + " " + amountTextbox.Text;
+
             currentDayItems.Items.Add(new FoodBoxItem(nutrition.calories, nutrition.fats, nutrition.saturatedFats, 
                 nutrition.carbohydrates, nutrition.sugars, nutrition.protein, 
-                nutrition.salt, nutrition.fibre, nameTextBox.Text, nutrition.NutritionItemId));
+                nutrition.salt, nutrition.fibre, name, nutrition.NutritionItemId));
             
             this.showTotals();
             this.resetFields();
