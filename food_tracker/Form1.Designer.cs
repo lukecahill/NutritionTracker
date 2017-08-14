@@ -96,6 +96,7 @@
             this.carbsTextBox.Name = "carbsTextBox";
             this.carbsTextBox.Size = new System.Drawing.Size(100, 20);
             this.carbsTextBox.TabIndex = 2;
+            this.carbsTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.carbsTextBox_KeyPress);
             // 
             // caloriesTextBox
             // 
@@ -111,6 +112,7 @@
             this.fatTextBox.Name = "fatTextBox";
             this.fatTextBox.Size = new System.Drawing.Size(100, 20);
             this.fatTextBox.TabIndex = 4;
+            this.fatTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.fatTextBox_KeyPress);
             // 
             // saturatesTextBox
             // 
@@ -118,6 +120,7 @@
             this.saturatesTextBox.Name = "saturatesTextBox";
             this.saturatesTextBox.Size = new System.Drawing.Size(100, 20);
             this.saturatesTextBox.TabIndex = 5;
+            this.saturatesTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.saturatesTextBox_KeyPress);
             // 
             // saltTextBox
             // 
@@ -125,6 +128,7 @@
             this.saltTextBox.Name = "saltTextBox";
             this.saltTextBox.Size = new System.Drawing.Size(100, 20);
             this.saltTextBox.TabIndex = 6;
+            this.saltTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.saltTextBox_KeyPress);
             // 
             // sugarsTextBox
             // 
@@ -132,6 +136,7 @@
             this.sugarsTextBox.Name = "sugarsTextBox";
             this.sugarsTextBox.Size = new System.Drawing.Size(100, 20);
             this.sugarsTextBox.TabIndex = 8;
+            this.sugarsTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.sugarsTextBox_KeyPress);
             // 
             // proteinTextBox
             // 
@@ -139,6 +144,7 @@
             this.proteinTextBox.Name = "proteinTextBox";
             this.proteinTextBox.Size = new System.Drawing.Size(100, 20);
             this.proteinTextBox.TabIndex = 9;
+            this.proteinTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.proteinTextBox_KeyPress);
             // 
             // fibreTextBox
             // 
@@ -146,6 +152,7 @@
             this.fibreTextBox.Name = "fibreTextBox";
             this.fibreTextBox.Size = new System.Drawing.Size(100, 20);
             this.fibreTextBox.TabIndex = 10;
+            this.fibreTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.fibreTextBox_KeyPress);
             // 
             // label1
             // 

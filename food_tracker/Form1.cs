@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
 
 namespace food_tracker {
     public partial class trackerForm : Form {
@@ -100,7 +101,11 @@ namespace food_tracker {
         }
 
         private double parseTextBoxForDouble(TextBox text) {
-            var parsed = double.Parse(text.Text);
+            var parsed = 0.0D;
+            if(double.TryParse(text.Text, out parsed)) {
+                return parsed;
+            }
+            MessageBox.Show("Error when attempting to parse integer values");
             return parsed;
         }
 
@@ -148,11 +153,13 @@ namespace food_tracker {
         }
 
         private void caloriesTextBox_KeyPress(object sender, KeyPressEventArgs e) {
-            // validate that a number was entered 
-            //if(!char.IsDigit(e.KeyChar) || !char.IsControl(e.KeyChar)) {
-            //    e.Handled = true;
-            //    return;
-            //}
+            this.validateDoubleInput(e);
+        }
+
+        private void validateDoubleInput(KeyPressEventArgs e) {
+            if (Regex.IsMatch(e.KeyChar.ToString(), @"[^0-9.]")) {
+                e.Handled = true;
+            }
         }
 
         private void removeItem_Click(object sender, EventArgs e) {
@@ -171,7 +178,7 @@ namespace food_tracker {
             
             this.resetFields();
             this.loadData();
-            // need to actually remove this item from the list.             
+            // need to actually remove this item from the list.
             this.currentDayItems.Items.Remove(this.currentDayItems.SelectedIndex);
         }
 
@@ -181,6 +188,34 @@ namespace food_tracker {
                 contextMenuStrip1.Visible = true;
                 var index = this.currentDayItems.IndexFromPoint(Cursor.Position);
             }
+        }
+
+        private void fatTextBox_KeyPress(object sender, KeyPressEventArgs e) {
+            this.validateDoubleInput(e);
+        }
+
+        private void saturatesTextBox_KeyPress(object sender, KeyPressEventArgs e) {
+            this.validateDoubleInput(e);
+        }
+
+        private void carbsTextBox_KeyPress(object sender, KeyPressEventArgs e) {
+            this.validateDoubleInput(e);
+        }
+
+        private void sugarsTextBox_KeyPress(object sender, KeyPressEventArgs e) {
+            this.validateDoubleInput(e);
+        }
+
+        private void fibreTextBox_KeyPress(object sender, KeyPressEventArgs e) {
+            this.validateDoubleInput(e);
+        }
+
+        private void proteinTextBox_KeyPress(object sender, KeyPressEventArgs e) {
+            this.validateDoubleInput(e);
+        }
+
+        private void saltTextBox_KeyPress(object sender, KeyPressEventArgs e) {
+            this.validateDoubleInput(e);
         }
     }
 }
