@@ -22,7 +22,7 @@ namespace food_tracker {
         }
 
         private void loadData() {
-            var day = dateTimePicker.Text.Replace(" ", "");
+            var day = Md5Hashing.CreateMD5(dateTimePicker.Text.Replace(" ", ""));
             var data = context.Nutrition.Where(x => x.dayId == day).ToList();
             foreach(var item in data) {
                 currentDayItems.Items.Add(new FoodBoxItem(item.calories, item.fats, item.saturatedFats, item.carbohydrates, item.sugars, item.protein, item.salt, item.fibre, item.name, item.NutritionItemId));
@@ -43,7 +43,7 @@ namespace food_tracker {
                 return;
             }
 
-            var day = dateTimePicker.Text.Replace(" ", "");
+            var day = Md5Hashing.CreateMD5(dateTimePicker.Text.Replace(" ", ""));
 
             var dayExists = context.Days.FirstOrDefault(x => x.WholeDayId == day);
             if(dayExists == null) {
