@@ -65,6 +65,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.removeItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nutritionItemId = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -434,20 +435,30 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.removeItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(118, 26);
             // 
             // removeItem
             // 
             this.removeItem.Name = "removeItem";
-            this.removeItem.Size = new System.Drawing.Size(152, 22);
+            this.removeItem.Size = new System.Drawing.Size(117, 22);
             this.removeItem.Text = "Remove";
             this.removeItem.Click += new System.EventHandler(this.removeItem_Click);
+            // 
+            // nutritionItemId
+            // 
+            this.nutritionItemId.AutoSize = true;
+            this.nutritionItemId.Location = new System.Drawing.Point(12, 231);
+            this.nutritionItemId.Name = "nutritionItemId";
+            this.nutritionItemId.Size = new System.Drawing.Size(58, 13);
+            this.nutritionItemId.TabIndex = 23;
+            this.nutritionItemId.Text = "itemIdHere";
             // 
             // trackerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(657, 391);
+            this.Controls.Add(this.nutritionItemId);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.nameTextBox);
             this.Controls.Add(this.panel1);
@@ -525,6 +536,7 @@
 		private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem removeItem;
+        private System.Windows.Forms.Label nutritionItemId;
     }
 }
 

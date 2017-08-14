@@ -25,7 +25,7 @@ namespace food_tracker {
             var day = dateTimePicker.Text.Replace(" ", "");
             var data = context.Nutrition.Where(x => x.dayId == day).ToList();
             foreach(var item in data) {
-                currentDayItems.Items.Add(new FoodBoxItem(item.calories, item.fats, item.saturatedFats, item.carbohydrates, item.sugars, item.protein, item.salt, item.fibre, item.name));
+                currentDayItems.Items.Add(new FoodBoxItem(item.calories, item.fats, item.saturatedFats, item.carbohydrates, item.sugars, item.protein, item.salt, item.fibre, item.name, item.NutritionItemId));
             }
 
             this.showTotals();
@@ -43,15 +43,14 @@ namespace food_tracker {
                 return;
             }
 
-            var day = "";
-            if(currentDayItems.Items.Count <= 0) {
-                day = dateTimePicker.Text.Replace(" ", "");
-                context.Days.Add(new WholeDay(day));
-            } else {
-                day = dateTimePicker.Text.Replace(" ", "");
-            }
+            var day = dateTimePicker.Text.Replace(" ", "");
 
-            // need to persist to database for the past days and current day for reloading - below is an exple of how the totals will be calculated.
+            var dayExists = context.Days.FirstOrDefault(x => x.WholeDayId == day);
+            if(dayExists == null) {
+                context.Days.Add(new WholeDay(day));
+            }
+            
+            // need to persist to database for the past days and current day for reloading - below is an example of how the totals will be calculated.
             var nutrition = new NutritionItem(
                 nameTextBox.Text,
                 day,
@@ -64,13 +63,13 @@ namespace food_tracker {
                 parseTextBoxForDouble(saltTextBox),
                 parseTextBoxForDouble(fibreTextBox)
             );
-
-            currentDayItems.Items.Add(new FoodBoxItem(nutrition.calories, nutrition.fats, nutrition.saturatedFats, 
-                nutrition.carbohydrates, nutrition.sugars, nutrition.protein, 
-                nutrition.salt, nutrition.fibre, nameTextBox.Text));
             
             context.Nutrition.Add(nutrition);
             context.SaveChanges();
+
+            currentDayItems.Items.Add(new FoodBoxItem(nutrition.calories, nutrition.fats, nutrition.saturatedFats, 
+                nutrition.carbohydrates, nutrition.sugars, nutrition.protein, 
+                nutrition.salt, nutrition.fibre, nameTextBox.Text, nutrition.NutritionItemId));
             
             this.showTotals();
             this.resetFields();
@@ -135,6 +134,8 @@ namespace food_tracker {
                 fibreTextBox.Text = item.fibre.ToString();
                 proteinTextBox.Text = item.protein.ToString();
                 saltTextBox.Text = item.salt.ToString();
+
+                nutritionItemId.Text = item.nutritionId.ToString();
             }
         }
 
@@ -157,23 +158,21 @@ namespace food_tracker {
         private void removeItem_Click(object sender, EventArgs e) {
             // minus the values from the totals. 
             // remove the item from the DB
-            var day = dateTimePicker.Text.Replace(" ", "");
-            context.Nutrition.Remove(new NutritionItem(
-                nameTextBox.Text,
-                day,
-                parseTextBoxForDouble(caloriesTextBox),
-                parseTextBoxForDouble(carbsTextBox),
-                parseTextBoxForDouble(sugarsTextBox),
-                parseTextBoxForDouble(fatTextBox),
-                parseTextBoxForDouble(saturatesTextBox),
-                parseTextBoxForDouble(proteinTextBox),
-                parseTextBoxForDouble(saltTextBox),
-                parseTextBoxForDouble(fibreTextBox)
-            ));
+            var itemId = int.Parse(nutritionItemId.Text);
+            var entity = context.Nutrition.FirstOrDefault(x => x.NutritionItemId == itemId);
 
+            if(entity != null) {
+                context.Nutrition.Remove(entity);
+                context.SaveChanges();
+            } else {
+                MessageBox.Show("Could not delete that item.", "Error deleting item", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            
             this.resetFields();
             this.loadData();
-            context.SaveChanges();
+            // need to actually remove this item from the list.             
+            this.currentDayItems.Items.Remove(this.currentDayItems.SelectedIndex);
         }
 
         private void currentDayItems_MouseUp(object sender, MouseEventArgs e) {
