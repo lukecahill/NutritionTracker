@@ -489,6 +489,7 @@
             this.pastItemsCombo.Size = new System.Drawing.Size(306, 21);
             this.pastItemsCombo.TabIndex = 26;
             this.pastItemsCombo.Visible = false;
+            this.pastItemsCombo.SelectedIndexChanged += new System.EventHandler(this.pastItemsCombo_SelectedIndexChanged);
             // 
             // label15
             // 

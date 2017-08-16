@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FoodBoxItem.cs" />
+    <Compile Include="FoodComboItem.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
