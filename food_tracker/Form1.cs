@@ -20,15 +20,15 @@ namespace food_tracker {
             textBoxesWithoutName = new TextBox[] { caloriesTextBox, fatTextBox, saturatesTextBox, carbsTextBox, sugarsTextBox, fibreTextBox, proteinTextBox, saltTextBox };
             dailyTotalLabels = new Label[] { totalCalLbl, totalFatLbl, totalCarbsLbl, totalFibreLbl, totalProteinLbl, totalSatFatLbl, totalSugarsLbl, totalSaltLbl};
 
-            this.helper = new Helper();
+            helper = new Helper();
             helper.calculateTotals(currentDayItems);
 
             if (development) pastItemsCombo.Visible = true;
-            this.Shown += new EventHandler(this.loadDataEvent);
+            Shown += new EventHandler(loadDataEvent);
         }
 
         private void loadDataEvent(object sender, EventArgs e) {
-            this.loadData();
+            loadData();
         }
 
         private void loadData() {
@@ -44,17 +44,17 @@ namespace food_tracker {
                 pastItemsCombo.Items.Add(new FoodComboItem(item.name, item.NutritionItemId, item.calories, item.fats, item.saturatedFats, item.carbohydrates, item.sugars, item.protein, item.salt, item.fibre));
             }
 
-            this.showTotals();
+            showTotals();
         }
 
         private void addNewItemButton_Click(object sender, EventArgs e) {
 
-            if(String.IsNullOrWhiteSpace(this.nameTextBox.Text)) {
+            if(String.IsNullOrWhiteSpace(nameTextBox.Text)) {
                 MessageBox.Show("You must enter a value for the name field.", "", MessageBoxButtons.OK);
                 return;
             }
 
-            if(this.areFieldsEmpty()) {
+            if(areFieldsEmpty()) {
                 MessageBox.Show("You must enter a value for all available fields.", "", MessageBoxButtons.OK);
                 return;
             }
@@ -95,8 +95,8 @@ namespace food_tracker {
                 nutrition.carbohydrates, nutrition.sugars, nutrition.protein, 
                 nutrition.salt, nutrition.fibre, name, nutrition.NutritionItemId));
             
-            this.showTotals();
-            this.resetFields();
+            showTotals();
+            resetFields();
         }
 
         private void showTotals() {            
@@ -142,10 +142,10 @@ namespace food_tracker {
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e) {
             // when the user changes the chosen date, everything should update
-            this.resetFields();
+            resetFields();
             currentDayItems.Items.Clear();
-            this.resetLabels();
-            this.loadData();
+            resetLabels();
+            loadData();
         }
         
         private void removeItem_Click(object sender, EventArgs e) {
@@ -161,15 +161,15 @@ namespace food_tracker {
                 return;
             }
             
-            this.currentDayItems.Items.Remove(this.currentDayItems.SelectedItem);
-            this.resetFields();
-            this.showTotals();
+            currentDayItems.Items.Remove(currentDayItems.SelectedItem);
+            resetFields();
+            showTotals();
         }
 
         private void currentDayItems_MouseUp(object sender, MouseEventArgs e) {
             if(e.Button == MouseButtons.Right) {
 
-                int index = this.currentDayItems.IndexFromPoint(e.Location);
+                int index = currentDayItems.IndexFromPoint(e.Location);
                 if (index != ListBox.NoMatches) {
                     currentDayItems.SelectedIndex = index;
                     menuItemContext.Show(Cursor.Position);
@@ -209,42 +209,42 @@ namespace food_tracker {
         }
 
         private void caloriesTextBox_KeyPress(object sender, KeyPressEventArgs e) {
-            this.validateDoubleInput(e);
+            validateDoubleInput(e);
         }
 
         private void fatTextBox_KeyPress(object sender, KeyPressEventArgs e) {
-            this.validateDoubleInput(e);
+            validateDoubleInput(e);
         }
 
         private void saturatesTextBox_KeyPress(object sender, KeyPressEventArgs e) {
-            this.validateDoubleInput(e);
+            validateDoubleInput(e);
         }
 
         private void carbsTextBox_KeyPress(object sender, KeyPressEventArgs e) {
-            this.validateDoubleInput(e);
+            validateDoubleInput(e);
         }
 
         private void sugarsTextBox_KeyPress(object sender, KeyPressEventArgs e) {
-            this.validateDoubleInput(e);
+            validateDoubleInput(e);
         }
 
         private void fibreTextBox_KeyPress(object sender, KeyPressEventArgs e) {
-            this.validateDoubleInput(e);
+            validateDoubleInput(e);
         }
 
         private void proteinTextBox_KeyPress(object sender, KeyPressEventArgs e) {
-            this.validateDoubleInput(e);
+            validateDoubleInput(e);
         }
 
         private void saltTextBox_KeyPress(object sender, KeyPressEventArgs e) {
-            this.validateDoubleInput(e);
+            validateDoubleInput(e);
         }
 
         #endregion
 
         private void pastItemsCombo_SelectedIndexChanged(object sender, EventArgs e) {
-            var item = (FoodComboItem)this.pastItemsCombo.SelectedItem;
-            if (this.pastItemsCombo.SelectedIndex > -1) {
+            var item = (FoodComboItem)pastItemsCombo.SelectedItem;
+            if (pastItemsCombo.SelectedIndex > -1) {
                 nameTextBox.Text = item.name;
                 caloriesTextBox.Text = item.calories.ToString();
                 fatTextBox.Text = item.fats.ToString();
