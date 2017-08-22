@@ -8,14 +8,21 @@ namespace food_tracker {
     public partial class trackerForm : Form {
 
         TrackerContext context = new TrackerContext();
-        TextBox[] textBoxes;
+        TextBox[] textBoxes, textBoxesWithoutName;
         Label[] dailyTotalLabels;
         bool development = true;
+        Helper helper;
 
         public trackerForm() {
             InitializeComponent();
+
             textBoxes = new TextBox[] { nameTextBox, caloriesTextBox, fatTextBox, saturatesTextBox, carbsTextBox, sugarsTextBox, fibreTextBox, proteinTextBox, saltTextBox };
+            textBoxesWithoutName = new TextBox[] { caloriesTextBox, fatTextBox, saturatesTextBox, carbsTextBox, sugarsTextBox, fibreTextBox, proteinTextBox, saltTextBox };
             dailyTotalLabels = new Label[] { totalCalLbl, totalFatLbl, totalCarbsLbl, totalFibreLbl, totalProteinLbl, totalSatFatLbl, totalSugarsLbl, totalSaltLbl};
+
+            this.helper = new Helper();
+            helper.calculateTotals(currentDayItems);
+
             if (development) pastItemsCombo.Visible = true;
             this.Shown += new EventHandler(this.loadDataEvent);
         }
@@ -31,7 +38,8 @@ namespace food_tracker {
                 currentDayItems.Items.Add(new FoodBoxItem(item.calories, item.fats, item.saturatedFats, item.carbohydrates, item.sugars, item.protein, item.salt, item.fibre, item.name, item.NutritionItemId));
             }
             
-            var distinct = context.Nutrition.ToArray().Distinct();
+            // cost involved with below query, with buffering all the data before returning anything.
+            var distinct = context.Nutrition.GroupBy(x => x.name).Select(group => group.FirstOrDefault()).ToArray().Distinct();
             foreach (var item in distinct) {
                 pastItemsCombo.Items.Add(new FoodComboItem(item.name, item.NutritionItemId, item.calories, item.fats, item.saturatedFats, item.carbohydrates, item.sugars, item.protein, item.salt, item.fibre));
             }
@@ -59,24 +67,24 @@ namespace food_tracker {
             }
             dayExists = null;
             
-            // need to persist to database for the past days and current day for reloading - below is an example of how the totals will be calculated.
             var nutrition = new NutritionItem(
                 nameTextBox.Text,
                 day,
-                parseTextBoxForDouble(caloriesTextBox), 
-                parseTextBoxForDouble(carbsTextBox),
-                parseTextBoxForDouble(sugarsTextBox),
-                parseTextBoxForDouble(fatTextBox),
-                parseTextBoxForDouble(saturatesTextBox),
-                parseTextBoxForDouble(proteinTextBox),
-                parseTextBoxForDouble(saltTextBox),
-                parseTextBoxForDouble(fibreTextBox)
+                helper.parseTextBoxForDouble(caloriesTextBox),
+                helper.parseTextBoxForDouble(carbsTextBox),
+                helper.parseTextBoxForDouble(sugarsTextBox),
+                helper.parseTextBoxForDouble(fatTextBox),
+                helper.parseTextBoxForDouble(saturatesTextBox),
+                helper.parseTextBoxForDouble(proteinTextBox),
+                helper.parseTextBoxForDouble(saltTextBox),
+                helper.parseTextBoxForDouble(fibreTextBox)
             );
             
             context.Nutrition.Add(nutrition);
             context.SaveChanges();
 
-            var name = nameTextBox.Text + " " + amountTextbox.Text;
+            // Append the amount to the name for database storage.
+            var name = $"{nameTextBox.Text} - {amountTextbox.Text}";
 
             currentDayItems.Items.Add(new FoodBoxItem(nutrition.calories, nutrition.fats, nutrition.saturatedFats, 
                 nutrition.carbohydrates, nutrition.sugars, nutrition.protein, 
@@ -86,43 +94,30 @@ namespace food_tracker {
             this.resetFields();
         }
 
-        private void showTotals() {
-            double totalCalories = 0, totalFats = 0, totalSats = 0, totalCarbs = 0, totalSugars = 0, totalProteins = 0, totalSalts = 0, totalFibres = 0;
-
-            foreach (FoodBoxItem item in currentDayItems.Items) {
-                totalCalories += item.calories;
-                totalFats += item.fats;
-                totalSats += item.saturatedFat;
-                totalCarbs += item.carbohydrates;
-                totalSugars += item.sugar;
-                totalProteins += item.protein;
-                totalSalts += item.salt;
-                totalFibres += item.fibre;
-            }
-
-            totalCalLbl.Text = totalCalories.ToString();
-            totalFatLbl.Text = totalFats.ToString();
-            totalCarbsLbl.Text = totalCarbs.ToString();
-            totalFibreLbl.Text = totalFibres.ToString();
-            totalProteinLbl.Text = totalProteins.ToString();
-            totalSatFatLbl.Text = totalSats.ToString();
-            totalSugarsLbl.Text = totalSugars.ToString();
-            totalSaltLbl.Text = totalSalts.ToString();
+        private void showTotals() {            
+            var totals = helper.calculateTotals(currentDayItems);
+            
+            totalCalLbl.Text = totals[0].ToString();
+            totalFatLbl.Text = totals[1].ToString();
+            totalCarbsLbl.Text = totals[2].ToString();
+            totalFibreLbl.Text = totals[3].ToString();
+            totalProteinLbl.Text = totals[4].ToString();
+            totalSatFatLbl.Text = totals[5].ToString();
+            totalSugarsLbl.Text = totals[6].ToString();
+            totalSaltLbl.Text = totals[7].ToString();
         }
 
-        private double parseTextBoxForDouble(TextBox text) {
-            var parsed = 0.0D;
-            if(double.TryParse(text.Text, out parsed)) {
-                return parsed;
-            }
-            MessageBox.Show("Error when attempting to parse integer values");
-            return parsed;
-        }
+        
 
         private bool areFieldsEmpty() {
-            return String.IsNullOrWhiteSpace(caloriesTextBox.Text) || String.IsNullOrWhiteSpace(fatTextBox.Text) || String.IsNullOrWhiteSpace(saturatesTextBox.Text)
-                || String.IsNullOrWhiteSpace(carbsTextBox.Text) || String.IsNullOrWhiteSpace(sugarsTextBox.Text) || String.IsNullOrWhiteSpace(fibreTextBox.Text)
-                || String.IsNullOrWhiteSpace(proteinTextBox.Text) || String.IsNullOrWhiteSpace(saltTextBox.Text);
+            bool empty = false;
+            foreach(var item in textBoxesWithoutName) {
+                if(String.IsNullOrWhiteSpace(item.Text)) {
+                    return empty = true;
+                }
+            }
+
+            return empty;
         }
 
         private void currentDayItems_DoubleClick(object sender, EventArgs e) {
@@ -165,6 +160,7 @@ namespace food_tracker {
             
             this.currentDayItems.Items.Remove(this.currentDayItems.SelectedItem);
             this.resetFields();
+            this.showTotals();
         }
 
         private void currentDayItems_MouseUp(object sender, MouseEventArgs e) {
