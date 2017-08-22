@@ -12,11 +12,12 @@ namespace food_tracker {
         public double salt { get; set; }
         public double fibre { get; set; }
         public string name { get; set; }
+        public double amount { get; set; }
         public int nutritionId { get; set; }
 
         public FoodComboItem() : base() { }
 
-        public FoodComboItem(string name, int itemId, double cals, double fats, double satFat, double carbs, double sugars, double protein, double salt, double fibre) {
+        public FoodComboItem(string name, int itemId, double cals, double fats, double satFat, double carbs, double sugars, double protein, double salt, double fibre, double amount) {
             this.name = name;
             this.calories = cals;
             this.fats = fats;
@@ -27,10 +28,11 @@ namespace food_tracker {
             this.protein = protein;
             this.fibre = fibre;
             this.nutritionId = itemId;
+            this.amount = amount;
         }
 
         public override string ToString() {
-            return this.name;
+            return $"{this.name} - {this.amount}";
         }
     }
 }

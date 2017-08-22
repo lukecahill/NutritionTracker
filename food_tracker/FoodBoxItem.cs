@@ -3,7 +3,8 @@ namespace food_tracker {
 	public class FoodBoxItem : ListBoxItem {
 
 		public double calories { get; set; }
-		public double fats { get; set; }
+        public double amount { get; set; }
+        public double fats { get; set; }
 		public double saturatedFat { get; set; }
 		public double carbohydrates { get; set; }
 		public double sugar { get; set; }
@@ -27,7 +28,7 @@ namespace food_tracker {
             this.fibre = fibre;
         }
 
-        public FoodBoxItem(double cals, double fats, double satFat, double carbs, double sugars, double protein, double salt, double fibre, string name, int itemId) {
+        public FoodBoxItem(double cals, double fats, double satFat, double carbs, double sugars, double protein, double salt, double fibre, string name, int itemId, double amount) {
             this.name = name;
             this.calories = cals;
             this.fats = fats;
@@ -38,10 +39,15 @@ namespace food_tracker {
             this.protein = protein;
             this.fibre = fibre;
             this.nutritionId = itemId;
+            this.amount = amount;
         }
 
         public override string ToString() {
-			return name;
-		}
+            if (this.amount <= 0) {
+                return this.name;
+            } else {
+                return $"{this.name} - {this.amount}";
+            }
+        }
 	}
 }

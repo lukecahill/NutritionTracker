@@ -8,6 +8,7 @@ namespace food_tracker {
         [Key]
         public int NutritionItemId { get; set; }
         public string name { get; set; }
+        public double amount { get; set; }
         public string dayId { get; set; }
         public double calories { get; set; }
         public double carbohydrates { get; set; }
@@ -24,7 +25,7 @@ namespace food_tracker {
         [Obsolete("Only needed for serialization and materialization", true)]
         public NutritionItem() { }
 
-        public NutritionItem(string name, string day, double calories, double carbohydrates, double sugars, double fats, double satFat, double protein, double salt, double fibre) {
+        public NutritionItem(string name, string day, double calories, double carbohydrates, double sugars, double fats, double satFat, double protein, double salt, double fibre, double amount) {
             this.name = name;
             this.dayId = day;
             this.calories = calories;
@@ -35,6 +36,11 @@ namespace food_tracker {
             this.protein = protein;
             this.salt = salt;
             this.fibre = fibre;
+            this.amount = amount;
+        }
+
+        public override string ToString() {
+            return this.name;
         }
     }
 }
