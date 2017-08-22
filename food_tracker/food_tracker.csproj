@@ -72,6 +72,10 @@
     <Compile Include="Migrations\201708131621422_initial.Designer.cs">
       <DependentUpon>201708131621422_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708221024467_add_amount_to_item.cs" />
+    <Compile Include="Migrations\201708221024467_add_amount_to_item.Designer.cs">
+      <DependentUpon>201708221024467_add_amount_to_item.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="NutritionItem.cs" />
     <Compile Include="Program.cs" />
@@ -83,6 +87,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708131621422_initial.resx">
       <DependentUpon>201708131621422_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708221024467_add_amount_to_item.resx">
+      <DependentUpon>201708221024467_add_amount_to_item.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

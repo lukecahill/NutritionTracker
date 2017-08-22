@@ -16,7 +16,7 @@ namespace food_tracker {
         public trackerForm() {
             InitializeComponent();
 
-            textBoxes = new TextBox[] { nameTextBox, caloriesTextBox, fatTextBox, saturatesTextBox, carbsTextBox, sugarsTextBox, fibreTextBox, proteinTextBox, saltTextBox };
+            textBoxes = new TextBox[] { nameTextBox, caloriesTextBox, fatTextBox, saturatesTextBox, carbsTextBox, sugarsTextBox, fibreTextBox, proteinTextBox, saltTextBox, amountTextbox };
             textBoxesWithoutName = new TextBox[] { caloriesTextBox, fatTextBox, saturatesTextBox, carbsTextBox, sugarsTextBox, fibreTextBox, proteinTextBox, saltTextBox };
             dailyTotalLabels = new Label[] { totalCalLbl, totalFatLbl, totalCarbsLbl, totalFibreLbl, totalProteinLbl, totalSatFatLbl, totalSugarsLbl, totalSaltLbl};
 
@@ -35,13 +35,13 @@ namespace food_tracker {
             var day = Md5Hashing.CreateMD5(dateTimePicker.Text.Replace(" ", ""));
             var data = context.Nutrition.Where(x => x.dayId == day).ToList();
             foreach(var item in data) {
-                currentDayItems.Items.Add(new FoodBoxItem(item.calories, item.fats, item.saturatedFats, item.carbohydrates, item.sugars, item.protein, item.salt, item.fibre, item.name, item.NutritionItemId));
+                currentDayItems.Items.Add(new FoodBoxItem(item.calories, item.fats, item.saturatedFats, item.carbohydrates, item.sugars, item.protein, item.salt, item.fibre, item.name, item.NutritionItemId, item.amount));
             }
             
             // cost involved with below query, with buffering all the data before returning anything.
             var distinct = context.Nutrition.GroupBy(x => x.name).Select(group => group.FirstOrDefault()).ToArray().Distinct();
             foreach (var item in distinct) {
-                pastItemsCombo.Items.Add(new FoodComboItem(item.name, item.NutritionItemId, item.calories, item.fats, item.saturatedFats, item.carbohydrates, item.sugars, item.protein, item.salt, item.fibre));
+                pastItemsCombo.Items.Add(new FoodComboItem(item.name, item.NutritionItemId, item.calories, item.fats, item.saturatedFats, item.carbohydrates, item.sugars, item.protein, item.salt, item.fibre, item.amount));
             }
 
             showTotals();
@@ -77,23 +77,16 @@ namespace food_tracker {
                 helper.parseTextBoxForDouble(saturatesTextBox),
                 helper.parseTextBoxForDouble(proteinTextBox),
                 helper.parseTextBoxForDouble(saltTextBox),
-                helper.parseTextBoxForDouble(fibreTextBox)
+                helper.parseTextBoxForDouble(fibreTextBox),
+                helper.parseTextBoxForDouble(amountTextbox)
             );
             
             context.Nutrition.Add(nutrition);
             context.SaveChanges();
-
-            // Append the amount to the name for database storage.
-            var name = "";
-            if (String.IsNullOrEmpty(amountTextbox.Text)) {
-                name = nameTextBox.Text;
-            } else {
-                name = $"{nameTextBox.Text} - {amountTextbox.Text}";
-            }
-
+            
             currentDayItems.Items.Add(new FoodBoxItem(nutrition.calories, nutrition.fats, nutrition.saturatedFats, 
                 nutrition.carbohydrates, nutrition.sugars, nutrition.protein, 
-                nutrition.salt, nutrition.fibre, name, nutrition.NutritionItemId));
+                nutrition.salt, nutrition.fibre, nutrition.name, nutrition.NutritionItemId, nutrition.amount));
             
             showTotals();
             resetFields();
@@ -124,13 +117,13 @@ namespace food_tracker {
                 fibreTextBox.Text = item.fibre.ToString();
                 proteinTextBox.Text = item.protein.ToString();
                 saltTextBox.Text = item.salt.ToString();
+                amountTextbox.Text = item.amount.ToString();
 
                 nutritionItemId.Text = item.nutritionId.ToString();
             }
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e) {
-            // when the user changes the chosen date, everything should update
             resetFields();
             currentDayItems.Items.Clear();
             resetLabels();
@@ -235,6 +228,7 @@ namespace food_tracker {
                 proteinTextBox.Text = item.protein.ToString();
                 saltTextBox.Text = item.salt.ToString();
                 nutritionItemId.Text = item.nutritionId.ToString();
+                amountTextbox.Text = item.amount.ToString();
             }
         }
     }
