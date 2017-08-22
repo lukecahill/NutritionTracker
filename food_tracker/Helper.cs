@@ -40,5 +40,16 @@ namespace food_tracker {
 
             return parsed;
         }
+
+        public bool areFieldsEmpty(TextBox[] textboxes) {
+            bool empty = false;
+            foreach (var item in textboxes) {
+                if (String.IsNullOrWhiteSpace(item.Text)) {
+                    return empty = true;
+                }
+            }
+
+            return empty;
+        }
     }
 }

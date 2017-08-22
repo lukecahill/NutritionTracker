@@ -54,7 +54,7 @@ namespace food_tracker {
                 return;
             }
 
-            if(areFieldsEmpty()) {
+            if(helper.areFieldsEmpty(textBoxesWithoutName)) {
                 MessageBox.Show("You must enter a value for all available fields.", "", MessageBoxButtons.OK);
                 return;
             }
@@ -112,17 +112,6 @@ namespace food_tracker {
             totalSaltLbl.Text = totals[7].ToString();
         }
         
-        private bool areFieldsEmpty() {
-            bool empty = false;
-            foreach(var item in textBoxesWithoutName) {
-                if(String.IsNullOrWhiteSpace(item.Text)) {
-                    return empty = true;
-                }
-            }
-
-            return empty;
-        }
-
         private void currentDayItems_DoubleClick(object sender, EventArgs e) {
             if(currentDayItems.SelectedIndex > -1) {
                 var item = (FoodBoxItem)currentDayItems.SelectedItem;
@@ -177,16 +166,7 @@ namespace food_tracker {
                 }
             }
         }
-
-        private bool addNewNutritionItem() {
-            // this will be saving a new item to the database.
-            // allows the user to choose from commonly consumed items.
-            // required new classes - do not have to be explicity linked 
-            //      e.g. a dropdown of these items which then populates the textboxes allowing the user to change before adding. 
-
-            return false;
-        }
-
+        
         #region Reset Methods
         private void resetFields() {
             foreach (var item in textBoxes) {
