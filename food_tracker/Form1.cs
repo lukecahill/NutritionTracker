@@ -84,7 +84,12 @@ namespace food_tracker {
             context.SaveChanges();
 
             // Append the amount to the name for database storage.
-            var name = $"{nameTextBox.Text} - {amountTextbox.Text}";
+            var name = "";
+            if (String.IsNullOrEmpty(amountTextbox.Text)) {
+                name = nameTextBox.Text;
+            } else {
+                name = $"{nameTextBox.Text} - {amountTextbox.Text}";
+            }
 
             currentDayItems.Items.Add(new FoodBoxItem(nutrition.calories, nutrition.fats, nutrition.saturatedFats, 
                 nutrition.carbohydrates, nutrition.sugars, nutrition.protein, 
@@ -106,9 +111,7 @@ namespace food_tracker {
             totalSugarsLbl.Text = totals[6].ToString();
             totalSaltLbl.Text = totals[7].ToString();
         }
-
         
-
         private bool areFieldsEmpty() {
             bool empty = false;
             foreach(var item in textBoxesWithoutName) {
