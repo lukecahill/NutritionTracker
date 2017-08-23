@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 namespace food_tracker {
-	public class FoodBoxItem : ListBoxItem {
+	public class FoodBoxItem : ListBoxItem, IListItems {
 
 		public double calories { get; set; }
         public double amount { get; set; }
