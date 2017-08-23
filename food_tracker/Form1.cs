@@ -229,7 +229,9 @@ namespace food_tracker {
             proteinTextBox.Text = item.protein.ToString();
             saltTextBox.Text = item.salt.ToString();
             nutritionItemId.Text = item.nutritionId.ToString();
-            amountTextbox.Text = item.amount.ToString();
+            if (item.amount > 0) {
+                amountTextbox.Text = item.amount.ToString();
+            }
         }
     }
 }

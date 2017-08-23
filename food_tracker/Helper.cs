@@ -33,6 +33,8 @@ namespace food_tracker {
             if (double.TryParse(text.Text, out parsed)) {
                 // suceeded to parse
                 Debug.WriteLine($"Parsed number: {parsed}");
+            } else if (String.IsNullOrWhiteSpace(text.Text)) {
+                Debug.WriteLine("Parsed number was empty; returning 0.");
             } else {
                 Debug.WriteLine($"Could not parse {text.Text} - ensure that this is a valid number.");
                 MessageBox.Show("Error when attempting to parse integer values");
