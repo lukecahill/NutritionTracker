@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -24,18 +25,19 @@ namespace food_tracker {
 
         [Obsolete("Only needed for serialization and materialization", true)]
         public NutritionItem() { }
-
-        public NutritionItem(string name, string day, double calories, double carbohydrates, double sugars, double fats, double satFat, double protein, double salt, double fibre, double amount) {
+        
+        public NutritionItem(string name, string day, List<double> values, double amount) {
             this.name = name;
             this.dayId = day;
-            this.calories = calories;
-            this.carbohydrates = carbohydrates;
-            this.sugars = sugars;
-            this.fats = fats;
-            this.saturatedFats = satFat;
-            this.protein = protein;
-            this.salt = salt;
-            this.fibre = fibre;
+            this.calories = values[0];
+            this.fats = values[1];
+            this.saturatedFats = values[2];
+            this.carbohydrates = values[3];
+            this.sugars = values[4];
+            this.fibre = values[5];
+            this.protein = values[6];
+            this.salt = values[7];
+            this.amount = values[8];
             this.amount = amount;
         }
 

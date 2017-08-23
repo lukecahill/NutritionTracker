@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
+using System.Collections.Generic;
 
 namespace food_tracker {
     public partial class trackerForm : Form {
@@ -57,12 +58,12 @@ namespace food_tracker {
 
         private void addNewItemButton_Click(object sender, EventArgs e) {
 
-            if(String.IsNullOrWhiteSpace(nameTextBox.Text)) {
+            if (String.IsNullOrWhiteSpace(nameTextBox.Text)) {
                 MessageBox.Show("You must enter a value for the name field.", "", MessageBoxButtons.OK);
                 return;
             }
 
-            if(helper.areFieldsEmpty(textBoxesWithoutName)) {
+            if (helper.areFieldsEmpty(textBoxesWithoutName)) {
                 MessageBox.Show("You must enter a value for all available fields.", "", MessageBoxButtons.OK);
                 return;
             }
@@ -70,22 +71,20 @@ namespace food_tracker {
             var day = Md5Hashing.CreateMD5(dateTimePicker.Text.Replace(" ", ""));
 
             var dayExists = context.Days.FirstOrDefault(x => x.WholeDayId == day);
-            if(dayExists == null) {
+            if (dayExists == null) {
                 context.Days.Add(new WholeDay(day));
             }
             dayExists = null;
+
+            var textboxvalues = new List<double>();
+            foreach (var textbox in textBoxesWithoutName) {
+                textboxvalues.Add(helper.parseTextBoxForDouble(textbox));
+            }
             
             var nutrition = new NutritionItem(
                 nameTextBox.Text,
                 day,
-                helper.parseTextBoxForDouble(caloriesTextBox),
-                helper.parseTextBoxForDouble(carbsTextBox),
-                helper.parseTextBoxForDouble(sugarsTextBox),
-                helper.parseTextBoxForDouble(fatTextBox),
-                helper.parseTextBoxForDouble(saturatesTextBox),
-                helper.parseTextBoxForDouble(proteinTextBox),
-                helper.parseTextBoxForDouble(saltTextBox),
-                helper.parseTextBoxForDouble(fibreTextBox),
+                textboxvalues,
                 helper.parseTextBoxForDouble(amountTextbox)
             );
             
