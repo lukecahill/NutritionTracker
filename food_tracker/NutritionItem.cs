@@ -37,7 +37,6 @@ namespace food_tracker {
             this.fibre = values[5];
             this.protein = values[6];
             this.salt = values[7];
-            this.amount = values[8];
             this.amount = amount;
         }
 
