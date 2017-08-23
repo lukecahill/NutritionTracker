@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 namespace food_tracker {
     public partial class trackerForm : Form {
 
-        TrackerContext context = new TrackerContext();
+        TrackerContext context;
         TextBox[] textBoxes, textBoxesWithoutName;
         Label[] dailyTotalLabels;
         bool development = true;
@@ -21,6 +21,14 @@ namespace food_tracker {
             dailyTotalLabels = new Label[] { totalCalLbl, totalFatLbl, totalCarbsLbl, totalFibreLbl, totalProteinLbl, totalSatFatLbl, totalSugarsLbl, totalSaltLbl};
 
             helper = new Helper();
+
+            try {
+                context = new TrackerContext();
+            } catch(Exception ex) {
+                Debug.WriteLine($"The error was: {ex.Message}");
+                MessageBox.Show($"Error connecting to database.\n\n{ex.Message}");
+            }
+
             helper.calculateTotals(currentDayItems);
 
             if (development) pastItemsCombo.Visible = true;
