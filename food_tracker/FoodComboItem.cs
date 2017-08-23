@@ -32,7 +32,11 @@ namespace food_tracker {
         }
 
         public override string ToString() {
-            return $"{this.name} - {this.amount}";
+            if (this.amount <= 0) {
+                return this.name;
+            } else {
+                return $"{this.name} - {this.amount}";
+            }
         }
     }
 }
