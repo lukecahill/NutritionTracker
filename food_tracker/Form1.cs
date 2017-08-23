@@ -116,18 +116,7 @@ namespace food_tracker {
         private void currentDayItems_DoubleClick(object sender, EventArgs e) {
             if(currentDayItems.SelectedIndex > -1) {
                 var item = (FoodBoxItem)currentDayItems.SelectedItem;
-                nameTextBox.Text = item.name;
-                caloriesTextBox.Text = item.calories.ToString();
-                fatTextBox.Text = item.fats.ToString();
-                saturatesTextBox.Text = item.saturatedFat.ToString();
-                carbsTextBox.Text = item.carbohydrates.ToString();
-                sugarsTextBox.Text = item.sugar.ToString();
-                fibreTextBox.Text = item.fibre.ToString();
-                proteinTextBox.Text = item.protein.ToString();
-                saltTextBox.Text = item.salt.ToString();
-                amountTextbox.Text = item.amount.ToString();
-
-                nutritionItemId.Text = item.nutritionId.ToString();
+                addToComboOrListBox(item);
             }
         }
 
@@ -224,20 +213,24 @@ namespace food_tracker {
         #endregion
 
         private void pastItemsCombo_SelectedIndexChanged(object sender, EventArgs e) {
-            var item = (FoodComboItem)pastItemsCombo.SelectedItem;
             if (pastItemsCombo.SelectedIndex > -1) {
-                nameTextBox.Text = item.name;
-                caloriesTextBox.Text = item.calories.ToString();
-                fatTextBox.Text = item.fats.ToString();
-                saturatesTextBox.Text = item.saturatedFat.ToString();
-                carbsTextBox.Text = item.carbohydrates.ToString();
-                sugarsTextBox.Text = item.sugar.ToString();
-                fibreTextBox.Text = item.fibre.ToString();
-                proteinTextBox.Text = item.protein.ToString();
-                saltTextBox.Text = item.salt.ToString();
-                nutritionItemId.Text = item.nutritionId.ToString();
-                amountTextbox.Text = item.amount.ToString();
+                var item = (FoodComboItem)pastItemsCombo.SelectedItem;
+                addToComboOrListBox(item);
             }
+        }
+
+        public void addToComboOrListBox(IListItems item) {
+            nameTextBox.Text = item.name;
+            caloriesTextBox.Text = item.calories.ToString();
+            fatTextBox.Text = item.fats.ToString();
+            saturatesTextBox.Text = item.saturatedFat.ToString();
+            carbsTextBox.Text = item.carbohydrates.ToString();
+            sugarsTextBox.Text = item.sugar.ToString();
+            fibreTextBox.Text = item.fibre.ToString();
+            proteinTextBox.Text = item.protein.ToString();
+            saltTextBox.Text = item.salt.ToString();
+            nutritionItemId.Text = item.nutritionId.ToString();
+            amountTextbox.Text = item.amount.ToString();
         }
     }
 }
