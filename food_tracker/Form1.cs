@@ -22,7 +22,6 @@ namespace food_tracker {
             dailyTotalLabels = new Label[] { totalCalLbl, totalFatLbl, totalCarbsLbl, totalFibreLbl, totalProteinLbl, totalSatFatLbl, totalSugarsLbl, totalSaltLbl};
 
             helper = new Helper();
-
             setHelpProviders();
             
             try {
@@ -247,7 +246,7 @@ namespace food_tracker {
         }
 
         private void helpToolStripMenuItem_Click(object sender, EventArgs e) {
-            MessageBox.Show("Created by Luke Cahill");
+            MessageBox.Show("Created by Luke Cahill.");
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e) {

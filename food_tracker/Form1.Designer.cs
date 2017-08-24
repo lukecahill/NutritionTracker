@@ -77,6 +77,7 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fillWithExampleDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
+            this.label17 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.menuItemContext.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -86,7 +87,7 @@
             // currentDayItems
             // 
             this.currentDayItems.FormattingEnabled = true;
-            this.currentDayItems.Location = new System.Drawing.Point(12, 92);
+            this.currentDayItems.Location = new System.Drawing.Point(12, 80);
             this.currentDayItems.Name = "currentDayItems";
             this.currentDayItems.Size = new System.Drawing.Size(416, 134);
             this.currentDayItems.TabIndex = 0;
@@ -242,7 +243,7 @@
             // 
             // dateTimePicker
             // 
-            this.dateTimePicker.Location = new System.Drawing.Point(12, 49);
+            this.dateTimePicker.Location = new System.Drawing.Point(12, 37);
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.Size = new System.Drawing.Size(416, 20);
             this.dateTimePicker.TabIndex = 19;
@@ -268,7 +269,7 @@
             this.panel1.Controls.Add(this.totalSatFatLbl);
             this.panel1.Controls.Add(this.totalFatLbl);
             this.panel1.Controls.Add(this.totalCalLbl);
-            this.panel1.Location = new System.Drawing.Point(12, 236);
+            this.panel1.Location = new System.Drawing.Point(12, 224);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(416, 146);
             this.panel1.TabIndex = 20;
@@ -437,6 +438,7 @@
             // 
             // nameTextBox
             // 
+            this.nameTextBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.RecentlyUsedList;
             this.nameTextBox.Location = new System.Drawing.Point(94, 73);
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(182, 20);
@@ -468,7 +470,7 @@
             // nutritionItemId
             // 
             this.nutritionItemId.AutoSize = true;
-            this.nutritionItemId.Location = new System.Drawing.Point(12, 72);
+            this.nutritionItemId.Location = new System.Drawing.Point(12, 60);
             this.nutritionItemId.Name = "nutritionItemId";
             this.nutritionItemId.Size = new System.Drawing.Size(58, 13);
             this.nutritionItemId.TabIndex = 23;
@@ -513,6 +515,7 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.label17);
             this.panel2.Controls.Add(this.label15);
             this.panel2.Controls.Add(this.addNewItemButton);
             this.panel2.Controls.Add(this.carbsTextBox);
@@ -536,7 +539,7 @@
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label5);
-            this.panel2.Location = new System.Drawing.Point(12, 388);
+            this.panel2.Location = new System.Drawing.Point(12, 376);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(416, 276);
             this.panel2.TabIndex = 28;
@@ -582,11 +585,19 @@
             this.fillWithExampleDataToolStripMenuItem.Text = "&Fill with Example Data";
             this.fillWithExampleDataToolStripMenuItem.Click += new System.EventHandler(this.fillWithExampleDataToolStripMenuItem_Click);
             // 
+            // label17
+            // 
+            this.label17.Location = new System.Drawing.Point(297, 237);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(100, 36);
+            this.label17.TabIndex = 30;
+            this.label17.Text = "Amounts should be in grams";
+            // 
             // trackerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(437, 675);
+            this.ClientSize = new System.Drawing.Size(437, 659);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.nutritionItemId);
             this.Controls.Add(this.menuStrip1);
@@ -665,6 +676,7 @@
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fillWithExampleDataToolStripMenuItem;
         private System.Windows.Forms.HelpProvider helpProvider1;
+        private System.Windows.Forms.Label label17;
     }
 }
 
