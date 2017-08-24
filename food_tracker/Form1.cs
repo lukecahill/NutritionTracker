@@ -218,6 +218,27 @@ namespace food_tracker {
             }
         }
 
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e) {
+            MessageBox.Show("Created by Luke Cahill");
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e) {
+            Application.Exit();
+        }
+
+        private void fillWithExampleDataToolStripMenuItem_Click(object sender, EventArgs e) {
+            nameTextBox.Text = "Example item";
+            caloriesTextBox.Text = "150";
+            fatTextBox.Text = "1.5";
+            saturatesTextBox.Text = "0.5";
+            carbsTextBox.Text = "9.6";
+            sugarsTextBox.Text = "9.6";
+            fibreTextBox.Text = "3.2";
+            proteinTextBox.Text = "6.4";
+            saltTextBox.Text = "0.1";
+            amountTextbox.Text = "50";
+        }
+
         public void addToComboOrListBox(IListItems item) {
             nameTextBox.Text = item.name;
             caloriesTextBox.Text = item.calories.ToString();
