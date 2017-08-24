@@ -23,6 +23,8 @@ namespace food_tracker {
 
             helper = new Helper();
 
+            setHelpProviders();
+            
             try {
                 context = new TrackerContext();
             } catch(Exception ex) {
@@ -34,6 +36,32 @@ namespace food_tracker {
 
             if (development) pastItemsCombo.Visible = true;
             Shown += new EventHandler(loadDataEvent);
+        }
+
+        private void setHelpProviders() {
+            helpProvider1.SetShowHelp(caloriesTextBox, true);
+            helpProvider1.SetHelpString(caloriesTextBox, "Enter the amount of calories in grams.");
+
+            helpProvider1.SetShowHelp(carbsTextBox, true);
+            helpProvider1.SetHelpString(carbsTextBox, "Enter the amount of carbohydrates in grams.");
+
+            helpProvider1.SetShowHelp(saturatesTextBox, true);
+            helpProvider1.SetHelpString(saturatesTextBox, "Enter the amount of saturated fat in grams.");
+
+            helpProvider1.SetShowHelp(fatTextBox, true);
+            helpProvider1.SetHelpString(fatTextBox, "Enter the amount of fat in grams.");
+
+            helpProvider1.SetShowHelp(proteinTextBox, true);
+            helpProvider1.SetHelpString(proteinTextBox, "Enter the amount of protein in grams.");
+
+            helpProvider1.SetShowHelp(sugarsTextBox, true);
+            helpProvider1.SetHelpString(sugarsTextBox, "Enter the amount of sugars in grams.");
+
+            helpProvider1.SetShowHelp(saltTextBox, true);
+            helpProvider1.SetHelpString(saltTextBox, "Enter the amount of salt in grams.");
+
+            helpProvider1.SetShowHelp(fibreTextBox, true);
+            helpProvider1.SetHelpString(fibreTextBox, "Enter the amount of fibre in grams.");
         }
 
         private void loadDataEvent(object sender, EventArgs e) {
