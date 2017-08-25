@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Windows.Controls;
+
 namespace food_tracker {
 	public class FoodBoxItem : ListBoxItem, IListItems {
 
@@ -13,6 +15,7 @@ namespace food_tracker {
 		public double fibre { get; set; }
 		public string name { get; set; }
         public int nutritionId { get; set; }
+        public DateTime dateTime { get; set; }
 
 		public FoodBoxItem() : base() { }
         
@@ -28,13 +31,14 @@ namespace food_tracker {
             this.fibre = fibre;
             this.nutritionId = itemId;
             this.amount = amount;
+            this.dateTime = DateTime.UtcNow;
         }
 
         public override string ToString() {
             if (this.amount <= 0) {
-                return this.name;
+                return $"{this.name, -35}\t-\t{this.dateTime.ToString("HH:mm:ss"), -10}";
             } else {
-                return $"{this.name} - {this.amount}";
+                return $"{this.name, -35}\t-\t{this.amount, -6}\t-\t{this.dateTime.ToString("HH:mm:ss"), -10}";
             }
         }
 	}
