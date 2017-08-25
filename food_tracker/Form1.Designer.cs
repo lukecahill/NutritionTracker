@@ -70,25 +70,36 @@
             this.label13 = new System.Windows.Forms.Label();
             this.pastItemsCombo = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fillWithExampleDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
+            this.label17 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.menuItemContext.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // currentDayItems
             // 
             this.currentDayItems.FormattingEnabled = true;
-            this.currentDayItems.Location = new System.Drawing.Point(12, 55);
+            this.currentDayItems.Location = new System.Drawing.Point(12, 80);
             this.currentDayItems.Name = "currentDayItems";
-            this.currentDayItems.Size = new System.Drawing.Size(383, 121);
+            this.currentDayItems.Size = new System.Drawing.Size(416, 134);
             this.currentDayItems.TabIndex = 0;
             this.currentDayItems.DoubleClick += new System.EventHandler(this.currentDayItems_DoubleClick);
             this.currentDayItems.MouseUp += new System.Windows.Forms.MouseEventHandler(this.currentDayItems_MouseUp);
             // 
             // addNewItemButton
             // 
-            this.addNewItemButton.Location = new System.Drawing.Point(295, 343);
+            this.addNewItemButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addNewItemButton.Location = new System.Drawing.Point(300, 72);
             this.addNewItemButton.Name = "addNewItemButton";
-            this.addNewItemButton.Size = new System.Drawing.Size(100, 20);
+            this.addNewItemButton.Size = new System.Drawing.Size(100, 58);
             this.addNewItemButton.TabIndex = 1;
             this.addNewItemButton.Text = "Add";
             this.addNewItemButton.UseVisualStyleBackColor = true;
@@ -96,7 +107,7 @@
             // 
             // carbsTextBox
             // 
-            this.carbsTextBox.Location = new System.Drawing.Point(152, 267);
+            this.carbsTextBox.Location = new System.Drawing.Point(157, 161);
             this.carbsTextBox.Name = "carbsTextBox";
             this.carbsTextBox.Size = new System.Drawing.Size(100, 20);
             this.carbsTextBox.TabIndex = 2;
@@ -104,7 +115,7 @@
             // 
             // caloriesTextBox
             // 
-            this.caloriesTextBox.Location = new System.Drawing.Point(12, 267);
+            this.caloriesTextBox.Location = new System.Drawing.Point(17, 161);
             this.caloriesTextBox.Name = "caloriesTextBox";
             this.caloriesTextBox.Size = new System.Drawing.Size(100, 20);
             this.caloriesTextBox.TabIndex = 3;
@@ -112,7 +123,7 @@
             // 
             // fatTextBox
             // 
-            this.fatTextBox.Location = new System.Drawing.Point(12, 303);
+            this.fatTextBox.Location = new System.Drawing.Point(17, 197);
             this.fatTextBox.Name = "fatTextBox";
             this.fatTextBox.Size = new System.Drawing.Size(100, 20);
             this.fatTextBox.TabIndex = 4;
@@ -120,7 +131,7 @@
             // 
             // saturatesTextBox
             // 
-            this.saturatesTextBox.Location = new System.Drawing.Point(12, 343);
+            this.saturatesTextBox.Location = new System.Drawing.Point(17, 237);
             this.saturatesTextBox.Name = "saturatesTextBox";
             this.saturatesTextBox.Size = new System.Drawing.Size(100, 20);
             this.saturatesTextBox.TabIndex = 5;
@@ -128,7 +139,7 @@
             // 
             // saltTextBox
             // 
-            this.saltTextBox.Location = new System.Drawing.Point(295, 303);
+            this.saltTextBox.Location = new System.Drawing.Point(300, 197);
             this.saltTextBox.Name = "saltTextBox";
             this.saltTextBox.Size = new System.Drawing.Size(100, 20);
             this.saltTextBox.TabIndex = 6;
@@ -136,7 +147,7 @@
             // 
             // sugarsTextBox
             // 
-            this.sugarsTextBox.Location = new System.Drawing.Point(152, 303);
+            this.sugarsTextBox.Location = new System.Drawing.Point(157, 197);
             this.sugarsTextBox.Name = "sugarsTextBox";
             this.sugarsTextBox.Size = new System.Drawing.Size(100, 20);
             this.sugarsTextBox.TabIndex = 8;
@@ -144,7 +155,7 @@
             // 
             // proteinTextBox
             // 
-            this.proteinTextBox.Location = new System.Drawing.Point(295, 267);
+            this.proteinTextBox.Location = new System.Drawing.Point(300, 161);
             this.proteinTextBox.Name = "proteinTextBox";
             this.proteinTextBox.Size = new System.Drawing.Size(100, 20);
             this.proteinTextBox.TabIndex = 9;
@@ -152,7 +163,7 @@
             // 
             // fibreTextBox
             // 
-            this.fibreTextBox.Location = new System.Drawing.Point(152, 343);
+            this.fibreTextBox.Location = new System.Drawing.Point(157, 237);
             this.fibreTextBox.Name = "fibreTextBox";
             this.fibreTextBox.Size = new System.Drawing.Size(100, 20);
             this.fibreTextBox.TabIndex = 10;
@@ -161,7 +172,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 251);
+            this.label1.Location = new System.Drawing.Point(18, 145);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 13);
             this.label1.TabIndex = 11;
@@ -170,7 +181,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 290);
+            this.label2.Location = new System.Drawing.Point(17, 184);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(22, 13);
             this.label2.TabIndex = 12;
@@ -179,7 +190,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 327);
+            this.label3.Location = new System.Drawing.Point(17, 221);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(71, 13);
             this.label3.TabIndex = 13;
@@ -188,7 +199,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(149, 251);
+            this.label4.Location = new System.Drawing.Point(154, 145);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(75, 13);
             this.label4.TabIndex = 14;
@@ -197,7 +208,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(149, 290);
+            this.label5.Location = new System.Drawing.Point(154, 184);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(40, 13);
             this.label5.TabIndex = 15;
@@ -206,7 +217,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(149, 327);
+            this.label6.Location = new System.Drawing.Point(154, 221);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(30, 13);
             this.label6.TabIndex = 16;
@@ -215,7 +226,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(292, 251);
+            this.label7.Location = new System.Drawing.Point(297, 145);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(40, 13);
             this.label7.TabIndex = 17;
@@ -224,7 +235,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(292, 290);
+            this.label8.Location = new System.Drawing.Point(297, 184);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(25, 13);
             this.label8.TabIndex = 18;
@@ -232,9 +243,9 @@
             // 
             // dateTimePicker
             // 
-            this.dateTimePicker.Location = new System.Drawing.Point(12, 12);
+            this.dateTimePicker.Location = new System.Drawing.Point(12, 37);
             this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(633, 20);
+            this.dateTimePicker.Size = new System.Drawing.Size(416, 20);
             this.dateTimePicker.TabIndex = 19;
             this.dateTimePicker.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
@@ -258,15 +269,15 @@
             this.panel1.Controls.Add(this.totalSatFatLbl);
             this.panel1.Controls.Add(this.totalFatLbl);
             this.panel1.Controls.Add(this.totalCalLbl);
-            this.panel1.Location = new System.Drawing.Point(401, 55);
+            this.panel1.Location = new System.Drawing.Point(12, 224);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(244, 308);
+            this.panel1.Size = new System.Drawing.Size(416, 146);
             this.panel1.TabIndex = 20;
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(17, 124);
+            this.label16.Location = new System.Drawing.Point(17, 117);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(34, 13);
             this.label16.TabIndex = 27;
@@ -276,7 +287,7 @@
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(26, 226);
+            this.label24.Location = new System.Drawing.Point(193, 117);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(25, 13);
             this.label24.TabIndex = 35;
@@ -286,7 +297,7 @@
             // totalSaltLbl
             // 
             this.totalSaltLbl.AutoSize = true;
-            this.totalSaltLbl.Location = new System.Drawing.Point(57, 226);
+            this.totalSaltLbl.Location = new System.Drawing.Point(224, 117);
             this.totalSaltLbl.Name = "totalSaltLbl";
             this.totalSaltLbl.Size = new System.Drawing.Size(10, 13);
             this.totalSaltLbl.TabIndex = 36;
@@ -295,7 +306,7 @@
             // totalProteinLbl
             // 
             this.totalProteinLbl.AutoSize = true;
-            this.totalProteinLbl.Location = new System.Drawing.Point(57, 201);
+            this.totalProteinLbl.Location = new System.Drawing.Point(224, 95);
             this.totalProteinLbl.Name = "totalProteinLbl";
             this.totalProteinLbl.Size = new System.Drawing.Size(10, 13);
             this.totalProteinLbl.TabIndex = 34;
@@ -314,7 +325,7 @@
             // totalFibreLbl
             // 
             this.totalFibreLbl.AutoSize = true;
-            this.totalFibreLbl.Location = new System.Drawing.Point(57, 178);
+            this.totalFibreLbl.Location = new System.Drawing.Point(224, 72);
             this.totalFibreLbl.Name = "totalFibreLbl";
             this.totalFibreLbl.Size = new System.Drawing.Size(10, 13);
             this.totalFibreLbl.TabIndex = 32;
@@ -323,7 +334,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(11, 201);
+            this.label22.Location = new System.Drawing.Point(178, 95);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(40, 13);
             this.label22.TabIndex = 33;
@@ -333,7 +344,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(21, 178);
+            this.label20.Location = new System.Drawing.Point(188, 72);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(30, 13);
             this.label20.TabIndex = 31;
@@ -353,7 +364,7 @@
             // totalSugarsLbl
             // 
             this.totalSugarsLbl.AutoSize = true;
-            this.totalSugarsLbl.Location = new System.Drawing.Point(57, 150);
+            this.totalSugarsLbl.Location = new System.Drawing.Point(224, 50);
             this.totalSugarsLbl.Name = "totalSugarsLbl";
             this.totalSugarsLbl.Size = new System.Drawing.Size(10, 13);
             this.totalSugarsLbl.TabIndex = 30;
@@ -372,7 +383,7 @@
             // totalCarbsLbl
             // 
             this.totalCarbsLbl.AutoSize = true;
-            this.totalCarbsLbl.Location = new System.Drawing.Point(57, 124);
+            this.totalCarbsLbl.Location = new System.Drawing.Point(57, 117);
             this.totalCarbsLbl.Name = "totalCarbsLbl";
             this.totalCarbsLbl.Size = new System.Drawing.Size(10, 13);
             this.totalCarbsLbl.TabIndex = 28;
@@ -391,7 +402,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(11, 150);
+            this.label18.Location = new System.Drawing.Point(178, 50);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(40, 13);
             this.label18.TabIndex = 29;
@@ -427,15 +438,16 @@
             // 
             // nameTextBox
             // 
-            this.nameTextBox.Location = new System.Drawing.Point(89, 215);
+            this.nameTextBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.RecentlyUsedList;
+            this.nameTextBox.Location = new System.Drawing.Point(94, 73);
             this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(163, 20);
+            this.nameTextBox.Size = new System.Drawing.Size(182, 20);
             this.nameTextBox.TabIndex = 21;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(9, 218);
+            this.label11.Location = new System.Drawing.Point(18, 76);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(76, 13);
             this.label11.TabIndex = 22;
@@ -458,7 +470,7 @@
             // nutritionItemId
             // 
             this.nutritionItemId.AutoSize = true;
-            this.nutritionItemId.Location = new System.Drawing.Point(12, 35);
+            this.nutritionItemId.Location = new System.Drawing.Point(12, 60);
             this.nutritionItemId.Name = "nutritionItemId";
             this.nutritionItemId.Size = new System.Drawing.Size(58, 13);
             this.nutritionItemId.TabIndex = 23;
@@ -467,26 +479,26 @@
             // 
             // amountTextbox
             // 
-            this.amountTextbox.Location = new System.Drawing.Point(323, 215);
+            this.amountTextbox.Location = new System.Drawing.Point(94, 110);
             this.amountTextbox.Name = "amountTextbox";
-            this.amountTextbox.Size = new System.Drawing.Size(72, 20);
+            this.amountTextbox.Size = new System.Drawing.Size(182, 20);
             this.amountTextbox.TabIndex = 24;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(274, 218);
+            this.label13.Location = new System.Drawing.Point(21, 113);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(43, 13);
+            this.label13.Size = new System.Drawing.Size(73, 13);
             this.label13.TabIndex = 25;
-            this.label13.Text = "Amount";
+            this.label13.Text = "Amount (ml/g)";
             // 
             // pastItemsCombo
             // 
             this.pastItemsCombo.FormattingEnabled = true;
-            this.pastItemsCombo.Location = new System.Drawing.Point(89, 182);
+            this.pastItemsCombo.Location = new System.Drawing.Point(16, 34);
             this.pastItemsCombo.Name = "pastItemsCombo";
-            this.pastItemsCombo.Size = new System.Drawing.Size(306, 21);
+            this.pastItemsCombo.Size = new System.Drawing.Size(384, 21);
             this.pastItemsCombo.TabIndex = 26;
             this.pastItemsCombo.Visible = false;
             this.pastItemsCombo.SelectedIndexChanged += new System.EventHandler(this.pastItemsCombo_SelectedIndexChanged);
@@ -494,51 +506,116 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(8, 185);
+            this.label15.Location = new System.Drawing.Point(17, 18);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(80, 13);
+            this.label15.Size = new System.Drawing.Size(121, 13);
             this.label15.TabIndex = 27;
-            this.label15.Text = "Choose an item";
+            this.label15.Text = "Choose an existing item:";
+            // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.label17);
+            this.panel2.Controls.Add(this.label15);
+            this.panel2.Controls.Add(this.addNewItemButton);
+            this.panel2.Controls.Add(this.carbsTextBox);
+            this.panel2.Controls.Add(this.pastItemsCombo);
+            this.panel2.Controls.Add(this.caloriesTextBox);
+            this.panel2.Controls.Add(this.label13);
+            this.panel2.Controls.Add(this.fatTextBox);
+            this.panel2.Controls.Add(this.amountTextbox);
+            this.panel2.Controls.Add(this.saturatesTextBox);
+            this.panel2.Controls.Add(this.saltTextBox);
+            this.panel2.Controls.Add(this.label11);
+            this.panel2.Controls.Add(this.sugarsTextBox);
+            this.panel2.Controls.Add(this.nameTextBox);
+            this.panel2.Controls.Add(this.proteinTextBox);
+            this.panel2.Controls.Add(this.fibreTextBox);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.label8);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.label7);
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.label6);
+            this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Location = new System.Drawing.Point(12, 376);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(416, 276);
+            this.panel2.TabIndex = 28;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.helpToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(437, 24);
+            this.menuStrip1.TabIndex = 29;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fillWithExampleDataToolStripMenuItem,
+            this.exitToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "&File";
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.exitToolStripMenuItem.Text = "&Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "&Help";
+            this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
+            // 
+            // fillWithExampleDataToolStripMenuItem
+            // 
+            this.fillWithExampleDataToolStripMenuItem.Name = "fillWithExampleDataToolStripMenuItem";
+            this.fillWithExampleDataToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.fillWithExampleDataToolStripMenuItem.Text = "&Fill with Example Data";
+            this.fillWithExampleDataToolStripMenuItem.Click += new System.EventHandler(this.fillWithExampleDataToolStripMenuItem_Click);
+            // 
+            // label17
+            // 
+            this.label17.Location = new System.Drawing.Point(297, 237);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(100, 36);
+            this.label17.TabIndex = 30;
+            this.label17.Text = "Amounts should be in grams";
             // 
             // trackerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(657, 368);
-            this.Controls.Add(this.label15);
-            this.Controls.Add(this.pastItemsCombo);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.amountTextbox);
+            this.ClientSize = new System.Drawing.Size(437, 659);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.nutritionItemId);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.nameTextBox);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dateTimePicker);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.fibreTextBox);
-            this.Controls.Add(this.proteinTextBox);
-            this.Controls.Add(this.sugarsTextBox);
-            this.Controls.Add(this.saltTextBox);
-            this.Controls.Add(this.saturatesTextBox);
-            this.Controls.Add(this.fatTextBox);
-            this.Controls.Add(this.caloriesTextBox);
-            this.Controls.Add(this.carbsTextBox);
-            this.Controls.Add(this.addNewItemButton);
             this.Controls.Add(this.currentDayItems);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "trackerForm";
             this.Text = "Nutrition Tracker";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.menuItemContext.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -592,6 +669,14 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ComboBox pastItemsCombo;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fillWithExampleDataToolStripMenuItem;
+        private System.Windows.Forms.HelpProvider helpProvider1;
+        private System.Windows.Forms.Label label17;
     }
 }
 
