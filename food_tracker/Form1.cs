@@ -71,13 +71,15 @@ namespace food_tracker {
             var day = Md5Hashing.CreateMD5(dateTimePicker.Text.Replace(" ", ""));
             var data = context.Nutrition.Where(x => x.dayId == day).ToList();
             foreach(var item in data) {
-                currentDayItems.Items.Add(new FoodBoxItem(item.calories, item.fats, item.saturatedFats, item.carbohydrates, item.sugars, item.protein, item.salt, item.fibre, item.name, item.NutritionItemId, item.amount));
+                currentDayItems.Items.Add(new FoodBoxItem(item.calories, item.fats, item.saturatedFats, item.carbohydrates, 
+                    item.sugars, item.protein, item.salt, item.fibre, item.name, item.NutritionItemId, item.amount, item.dateTime));
             }
             
             // cost involved with below query, with buffering all the data before returning anything.
-            var distinct = context.Nutrition.GroupBy(x => x.name).Select(group => group.FirstOrDefault()).ToArray().Distinct();
+            var distinct = context.Nutrition.GroupBy(x => x.name).Select(group => group.FirstOrDefault()).ToArray().Distinct().OrderBy(o => o.dateTime).ThenBy(b => b.name);
             foreach (var item in distinct) {
-                pastItemsCombo.Items.Add(new FoodComboItem(item.name, item.NutritionItemId, item.calories, item.fats, item.saturatedFats, item.carbohydrates, item.sugars, item.protein, item.salt, item.fibre, item.amount));
+                pastItemsCombo.Items.Add(new FoodComboItem(item.name, item.NutritionItemId, item.calories, item.fats, 
+                    item.saturatedFats, item.carbohydrates, item.sugars, item.protein, item.salt, item.fibre, item.amount));
             }
 
             showTotals();
@@ -120,7 +122,7 @@ namespace food_tracker {
             
             currentDayItems.Items.Add(new FoodBoxItem(nutrition.calories, nutrition.fats, nutrition.saturatedFats, 
                 nutrition.carbohydrates, nutrition.sugars, nutrition.protein, 
-                nutrition.salt, nutrition.fibre, nutrition.name, nutrition.NutritionItemId, nutrition.amount));
+                nutrition.salt, nutrition.fibre, nutrition.name, nutrition.NutritionItemId, nutrition.amount, nutrition.dateTime));
             
             showTotals();
             resetFields();

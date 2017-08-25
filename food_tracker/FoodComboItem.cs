@@ -35,7 +35,7 @@ namespace food_tracker {
             if (this.amount <= 0) {
                 return this.name;
             } else {
-                return $"{this.name} - {this.amount}";
+                return $"{this.name, -35}\t-\t{this.amount, 6}";
             }
         }
     }

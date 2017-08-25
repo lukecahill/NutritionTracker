@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Windows.Controls;
 
 namespace food_tracker {
@@ -19,7 +20,7 @@ namespace food_tracker {
 
 		public FoodBoxItem() : base() { }
         
-        public FoodBoxItem(double cals, double fats, double satFat, double carbs, double sugars, double protein, double salt, double fibre, string name, int itemId, double amount) {
+        public FoodBoxItem(double cals, double fats, double satFat, double carbs, double sugars, double protein, double salt, double fibre, string name, int itemId, double amount, DateTime dateTime) {
             this.name = name;
             this.calories = cals;
             this.fats = fats;
@@ -31,15 +32,19 @@ namespace food_tracker {
             this.fibre = fibre;
             this.nutritionId = itemId;
             this.amount = amount;
-            this.dateTime = DateTime.UtcNow;
+            this.dateTime = dateTime;
         }
 
         public override string ToString() {
+            if(this.dateTime == null) {
+                return this.name;
+            }
+
             if (this.amount <= 0) {
                 return $"{this.name, -35}\t-\t{this.dateTime.ToString("HH:mm:ss"), -10}";
             } else {
                 return $"{this.name, -35}\t-\t{this.amount, -6}\t-\t{this.dateTime.ToString("HH:mm:ss"), -10}";
             }
         }
-	}
+    }
 }
