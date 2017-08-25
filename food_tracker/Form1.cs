@@ -277,8 +277,11 @@ namespace food_tracker {
             proteinTextBox.Text = item.protein.ToString();
             saltTextBox.Text = item.salt.ToString();
             nutritionItemId.Text = item.nutritionId.ToString();
+
             if (item.amount > 0) {
                 amountTextbox.Text = item.amount.ToString();
+            } else {
+                amountTextbox.Clear();
             }
         }
     }
