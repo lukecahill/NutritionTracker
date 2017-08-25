@@ -19,6 +19,7 @@ namespace food_tracker {
         public double protein { get; set; }
         public double salt { get; set; }
         public double fibre { get; set; }
+        public DateTime dateTime { get; set; }
 
         [ForeignKey("dayId")]
         public WholeDay wholeDay { get; set; }
@@ -38,6 +39,7 @@ namespace food_tracker {
             this.protein = values[6];
             this.salt = values[7];
             this.amount = amount;
+            this.dateTime = DateTime.UtcNow;
         }
 
         public override string ToString() {
