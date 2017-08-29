@@ -71,13 +71,13 @@
             this.pastItemsCombo = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label17 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fillWithExampleDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fillWithExampleDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
-            this.label17 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.menuItemContext.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -500,7 +500,6 @@
             this.pastItemsCombo.Name = "pastItemsCombo";
             this.pastItemsCombo.Size = new System.Drawing.Size(384, 21);
             this.pastItemsCombo.TabIndex = 26;
-            this.pastItemsCombo.Visible = false;
             this.pastItemsCombo.SelectedIndexChanged += new System.EventHandler(this.pastItemsCombo_SelectedIndexChanged);
             // 
             // label15
@@ -544,6 +543,14 @@
             this.panel2.Size = new System.Drawing.Size(416, 276);
             this.panel2.TabIndex = 28;
             // 
+            // label17
+            // 
+            this.label17.Location = new System.Drawing.Point(297, 237);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(100, 36);
+            this.label17.TabIndex = 30;
+            this.label17.Text = "Amounts should be in grams";
+            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -564,6 +571,13 @@
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "&File";
             // 
+            // fillWithExampleDataToolStripMenuItem
+            // 
+            this.fillWithExampleDataToolStripMenuItem.Name = "fillWithExampleDataToolStripMenuItem";
+            this.fillWithExampleDataToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.fillWithExampleDataToolStripMenuItem.Text = "&Fill with Example Data";
+            this.fillWithExampleDataToolStripMenuItem.Click += new System.EventHandler(this.fillWithExampleDataToolStripMenuItem_Click);
+            // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
@@ -577,21 +591,6 @@
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "&Help";
             this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
-            // 
-            // fillWithExampleDataToolStripMenuItem
-            // 
-            this.fillWithExampleDataToolStripMenuItem.Name = "fillWithExampleDataToolStripMenuItem";
-            this.fillWithExampleDataToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
-            this.fillWithExampleDataToolStripMenuItem.Text = "&Fill with Example Data";
-            this.fillWithExampleDataToolStripMenuItem.Click += new System.EventHandler(this.fillWithExampleDataToolStripMenuItem_Click);
-            // 
-            // label17
-            // 
-            this.label17.Location = new System.Drawing.Point(297, 237);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(100, 36);
-            this.label17.TabIndex = 30;
-            this.label17.Text = "Amounts should be in grams";
             // 
             // trackerForm
             // 

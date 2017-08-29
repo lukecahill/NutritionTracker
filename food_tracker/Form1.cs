@@ -32,8 +32,7 @@ namespace food_tracker {
             }
 
             helper.calculateTotals(currentDayItems);
-
-            if (development) pastItemsCombo.Visible = true;
+            
             Shown += new EventHandler(loadDataEvent);
         }
 
