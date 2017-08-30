@@ -96,13 +96,7 @@ namespace food_tracker {
                 return;
             }
 
-            var day = Md5Hashing.CreateMD5(dateTimePicker.Text.Replace(" ", ""));
-
-            var dayExists = context.Days.FirstOrDefault(x => x.WholeDayId == day);
-            if (dayExists == null) {
-                context.Days.Add(new WholeDay(day));
-            }
-            dayExists = null;
+            var day = helper.addOrUpdateCurrentDay(dateTimePicker.Text.Replace(" ", ""));
 
             var textboxvalues = new List<double>();
             foreach (var textbox in textBoxesWithoutName) {
@@ -126,7 +120,7 @@ namespace food_tracker {
             showTotals();
             resetFields();
         }
-
+        
         private void showTotals() {            
             var totals = helper.calculateTotals(currentDayItems);
 
