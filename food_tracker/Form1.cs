@@ -129,15 +129,17 @@ namespace food_tracker {
 
         private void showTotals() {            
             var totals = helper.calculateTotals(currentDayItems);
-            
-            totalCalLbl.Text = totals[0].ToString();
-            totalFatLbl.Text = totals[1].ToString();
-            totalCarbsLbl.Text = totals[2].ToString();
-            totalFibreLbl.Text = totals[3].ToString();
-            totalProteinLbl.Text = totals[4].ToString();
-            totalSatFatLbl.Text = totals[5].ToString();
-            totalSugarsLbl.Text = totals[6].ToString();
-            totalSaltLbl.Text = totals[7].ToString();
+
+            if (totals != null) {
+                totalCalLbl.Text = totals["calories"].ToString();
+                totalFatLbl.Text = totals["fats"].ToString();
+                totalCarbsLbl.Text = totals["carbohydrates"].ToString();
+                totalFibreLbl.Text = totals["fibre"].ToString();
+                totalProteinLbl.Text = totals["protein"].ToString();
+                totalSatFatLbl.Text = totals["saturatedFats"].ToString();
+                totalSugarsLbl.Text = totals["sugars"].ToString();
+                totalSaltLbl.Text = totals["salt"].ToString();
+            }
         }
         
         private void currentDayItems_DoubleClick(object sender, EventArgs e) {

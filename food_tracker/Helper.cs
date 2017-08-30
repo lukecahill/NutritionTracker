@@ -1,31 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 
 namespace food_tracker {
     public class Helper {
 
-        public double[] calculateTotals(ListBox boxItem) {
+        public Dictionary<string, double> calculateTotals(ListBox boxItem) {
 
-            // calories, fats, sats, carbs, sugars, proteins, salts, fibre
-            double[] values = { 0, 0, 0, 0, 0, 0, 0, 0 };
+            var returnDictionary = new Dictionary<string, double>() {
+                { "calories", 0.0D },
+                { "fats", 0.0D },
+                { "saturatedFats", 0.0D },
+                { "sugars", 0.0D },
+                { "protein", 0.0D },
+                { "salt", 0.0D },
+                { "fibre", 0.0D },
+                { "carbohydrates", 0.0D },
+            };
 
-            foreach (FoodBoxItem item in boxItem.Items) {
-                values[0] += item.calories;
-                values[1] += item.fats;
-                values[2] += item.saturatedFat;
-                values[3] += item.carbohydrates;
-                values[4] += item.sugar;
-                values[5] += item.protein;
-                values[6] += item.salt;
-                values[7] += item.fibre;
+            if (boxItem.Items.Count > 0) {
+                foreach (FoodBoxItem item in boxItem.Items) {
+                    returnDictionary["calories"] += item.calories;
+                    returnDictionary["fats"] += item.fats;
+                    returnDictionary["saturatedFats"] += item.saturatedFat;
+                    returnDictionary["sugars"] += item.sugar;
+                    returnDictionary["protein"] += item.protein;
+                    returnDictionary["salt"] += item.salt;
+                    returnDictionary["fibre"] += item.fibre;
+                    returnDictionary["carbohydrates"] += item.carbohydrates;
+                }
+
+                return returnDictionary;
             }
 
-            return values;
+            return null;
         }
 
         public double parseTextBoxForDouble(TextBox text) {
