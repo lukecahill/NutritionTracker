@@ -44,7 +44,7 @@ namespace food_tracker {
         }
 
         // TODO: below if you could not parse then the number must not be a valid double - this should return an error, rather than just setting that field to 0.
-        public double parseTextBoxForDouble(TextBox text) {
+        public double? parseTextBoxForDouble(TextBox text) {
             var parsed = 0.0D;
             if (double.TryParse(text.Text, out parsed)) {
                 // suceeded to parse
@@ -54,6 +54,7 @@ namespace food_tracker {
             } else {
                 Debug.WriteLine($"Could not parse {text.Text} - ensure that this is a valid number.");
                 MessageBox.Show("Error when attempting to parse integer values");
+                return null;
             }
 
             return parsed;
