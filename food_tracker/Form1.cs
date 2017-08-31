@@ -100,14 +100,24 @@ namespace food_tracker {
 
             var textboxvalues = new List<double>();
             foreach (var textbox in textBoxesWithoutName) {
-                textboxvalues.Add(helper.parseTextBoxForDouble(textbox));
+                var value = helper.parseTextBoxForDouble(textbox);
+                if (value != null) {
+                    textboxvalues.Add(value.Value);
+                } else {
+                    return;
+                }
+            }
+
+            var amount = helper.parseTextBoxForDouble(amountTextbox);
+            if(amount == null) {
+                return;
             }
             
             var nutrition = new NutritionItem(
                 nameTextBox.Text,
                 day,
                 textboxvalues,
-                helper.parseTextBoxForDouble(amountTextbox)
+                amount.Value
             );
             
             context.Nutrition.Add(nutrition);
