@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.Diagnostics;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using food_tracker.Repository;
@@ -23,13 +22,7 @@ namespace food_tracker {
             textBoxesWithoutName = new TextBox[] { caloriesTextBox, fatTextBox, saturatesTextBox, carbsTextBox, sugarsTextBox, fibreTextBox, proteinTextBox, saltTextBox };
             dailyTotalLabels = new Label[] { totalCalLbl, totalFatLbl, totalCarbsLbl, totalFibreLbl, totalProteinLbl, totalSatFatLbl, totalSugarsLbl, totalSaltLbl};
             
-            try { 
-                _repo = new NutritionRepository();
-            } catch(Exception ex) {
-                Debug.WriteLine($"The error was: {ex.Message}");
-                MessageBox.Show($"Error connecting to database.\n\n{ex.Message}");
-            }
-
+            _repo = new NutritionRepository();
             helper = new Helper(_repo);
 
             setHelpProviders();

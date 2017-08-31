@@ -2,6 +2,8 @@
 using System.Linq;
 using food_tracker.Interfaces;
 using food_tracker.DAL;
+using System.Diagnostics;
+using System;
 
 namespace food_tracker.Repository {
     public class NutritionRepository : IRepository {
@@ -9,14 +11,15 @@ namespace food_tracker.Repository {
         private readonly IMyEntitiesContext _db = null;
 
         public NutritionRepository() {
-            _db = new TrackerContext();
+            try {
+                _db = new TrackerContext();
+            } catch(Exception e) {
+                Debug.WriteLine($"Could not connect to database, error: {e.Message}");
+            }
         }
 
         public WholeDay GetDay(string id) {
-            var day = Md5Hashing.CreateMD5(id);
-            var dayExists = _db.Days.FirstOrDefault(x => x.WholeDayId == day);
-
-            return dayExists = dayExists ?? null;
+            return _db.Days.FirstOrDefault(x => x.WholeDayId == id);
         }
 
         public void AddDay(WholeDay day) {
