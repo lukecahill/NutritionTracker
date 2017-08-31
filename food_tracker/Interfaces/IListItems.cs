@@ -1,4 +1,4 @@
-﻿namespace food_tracker {
+﻿namespace food_tracker.Interfaces {
     public interface IListItems {
         double calories { get; set; }
         double amount { get; set; }
