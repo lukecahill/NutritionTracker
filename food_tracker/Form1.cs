@@ -8,11 +8,11 @@ using System.Collections.Generic;
 namespace food_tracker {
     public partial class trackerForm : Form {
 
-        TrackerContext context;
-        TextBox[] textBoxes, textBoxesWithoutName;
-        Label[] dailyTotalLabels;
-        bool development = true;
-        Helper helper;
+        private readonly TrackerContext context = null;
+        private readonly TextBox[] textBoxes, textBoxesWithoutName;
+        private readonly Label[] dailyTotalLabels;
+        private bool development = true;
+        private readonly Helper helper;
 
         public trackerForm() {
             InitializeComponent();

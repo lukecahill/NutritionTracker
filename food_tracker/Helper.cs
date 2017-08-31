@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace food_tracker {
     public class Helper {
-        TrackerContext context = null;
+        private readonly TrackerContext context = null;
 
         public Helper() {
             context = new TrackerContext();
@@ -43,7 +43,6 @@ namespace food_tracker {
             return null;
         }
 
-        // TODO: below if you could not parse then the number must not be a valid double - this should return an error, rather than just setting that field to 0.
         public double? parseTextBoxForDouble(TextBox text) {
             var parsed = 0.0D;
             if (double.TryParse(text.Text, out parsed)) {
