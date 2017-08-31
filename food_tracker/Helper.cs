@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Diagnostics;
-using food_tracker.Repository;
 using food_tracker.DAL;
+using food_tracker.Interfaces;
 
 namespace food_tracker {
     public class Helper {
-        private readonly NutritionRepository _repo = null;
+        private readonly IRepository _repo = null;
 
-        public Helper() {
-            _repo = new NutritionRepository(new TrackerContext());
+        public Helper(IRepository repo) {
+            _repo = repo;
         }
 
         public Dictionary<string, double> calculateTotals(ListBox boxItem) {

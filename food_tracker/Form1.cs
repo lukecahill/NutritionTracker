@@ -14,7 +14,7 @@ namespace food_tracker {
         private readonly TextBox[] textBoxes, textBoxesWithoutName;
         private readonly Label[] dailyTotalLabels;
         private readonly Helper helper;
-        private readonly NutritionRepository _repo = null;
+        private readonly IRepository _repo = null;
 
         public trackerForm() {
             InitializeComponent();
@@ -22,15 +22,15 @@ namespace food_tracker {
             textBoxes = new TextBox[] { nameTextBox, caloriesTextBox, fatTextBox, saturatesTextBox, carbsTextBox, sugarsTextBox, fibreTextBox, proteinTextBox, saltTextBox, amountTextbox };
             textBoxesWithoutName = new TextBox[] { caloriesTextBox, fatTextBox, saturatesTextBox, carbsTextBox, sugarsTextBox, fibreTextBox, proteinTextBox, saltTextBox };
             dailyTotalLabels = new Label[] { totalCalLbl, totalFatLbl, totalCarbsLbl, totalFibreLbl, totalProteinLbl, totalSatFatLbl, totalSugarsLbl, totalSaltLbl};
-
-            helper = new Helper();
-
+            
             try { 
-                _repo = new NutritionRepository(new TrackerContext());
+                _repo = new NutritionRepository();
             } catch(Exception ex) {
                 Debug.WriteLine($"The error was: {ex.Message}");
                 MessageBox.Show($"Error connecting to database.\n\n{ex.Message}");
             }
+
+            helper = new Helper(_repo);
 
             setHelpProviders();
             helper.calculateTotals(currentDayItems);

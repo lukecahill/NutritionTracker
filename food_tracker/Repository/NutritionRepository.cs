@@ -8,8 +8,8 @@ namespace food_tracker.Repository {
 
         private readonly IMyEntitiesContext _db = null;
 
-        public NutritionRepository(IMyEntitiesContext db) {
-            _db = db;
+        public NutritionRepository() {
+            _db = new TrackerContext();
         }
 
         public WholeDay GetDay(string id) {
