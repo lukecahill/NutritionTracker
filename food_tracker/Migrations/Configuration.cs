@@ -5,7 +5,7 @@ namespace food_tracker.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<food_tracker.TrackerContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<food_tracker.DAL.TrackerContext>
     {
         public Configuration()
         {
@@ -13,7 +13,7 @@ namespace food_tracker.Migrations
             ContextKey = "food_tracker.TrackerContext";
         }
 
-        protected override void Seed(TrackerContext context)
+        protected override void Seed(DAL.TrackerContext context)
         {
             //  This method will be called after migrating to the latest version.
 

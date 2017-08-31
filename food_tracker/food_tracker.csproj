@@ -59,8 +59,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FoodBoxItem.cs" />
-    <Compile Include="FoodComboItem.cs" />
+    <Compile Include="Interfaces\IMyEntitiesContext.cs" />
+    <Compile Include="ListItems\FoodBoxItem.cs" />
+    <Compile Include="ListItems\FoodComboItem.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,7 +69,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Helper.cs" />
-    <Compile Include="IListItems.cs" />
+    <Compile Include="Interfaces\IListItems.cs" />
     <Compile Include="Md5Hashing.cs" />
     <Compile Include="Migrations\201708131621422_initial.cs" />
     <Compile Include="Migrations\201708131621422_initial.Designer.cs">
@@ -83,11 +84,13 @@
       <DependentUpon>201708250921460_add_datetime.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="NutritionItem.cs" />
+    <Compile Include="DAL\NutritionItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TrackerContext.cs" />
-    <Compile Include="WholeDay.cs" />
+    <Compile Include="DAL\TrackerContext.cs" />
+    <Compile Include="DAL\WholeDay.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Repository\NutritionRepository.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -123,6 +126,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

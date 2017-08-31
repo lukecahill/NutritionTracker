@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.Windows.Controls;
+using food_tracker.Interfaces;
 
 namespace food_tracker {
 	public class FoodBoxItem : ListBoxItem, IListItems {

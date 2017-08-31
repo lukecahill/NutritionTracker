@@ -1,6 +1,7 @@
 ﻿using System.Windows.Controls;
+using food_tracker.Interfaces;
 
-namespace food_tracker {
+namespace food_tracker.ListItems {
     public class FoodComboItem : ComboBoxItem, IListItems {
 
         public double calories { get; set; }
