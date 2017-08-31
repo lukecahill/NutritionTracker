@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Diagnostics;
-using System.Linq;
 using food_tracker.Repository;
+using food_tracker.DAL;
 
 namespace food_tracker {
     public class Helper {

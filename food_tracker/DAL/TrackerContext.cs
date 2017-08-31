@@ -1,6 +1,7 @@
 ﻿using System.Data.Entity;
+using food_tracker.Interfaces;
 
-namespace food_tracker {
+namespace food_tracker.DAL {
     public class TrackerContext : DbContext, IMyEntitiesContext {
 
         public TrackerContext() : base() {

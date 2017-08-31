@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace food_tracker {
+namespace food_tracker.DAL {
     public class WholeDay {
 
         [Key]

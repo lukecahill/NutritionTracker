@@ -59,7 +59,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAL\IMyEntitiesContext.cs" />
+    <Compile Include="Interfaces\IMyEntitiesContext.cs" />
     <Compile Include="ListItems\FoodBoxItem.cs" />
     <Compile Include="ListItems\FoodComboItem.cs" />
     <Compile Include="Form1.cs">
@@ -69,7 +69,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Helper.cs" />
-    <Compile Include="ListItems\IListItems.cs" />
+    <Compile Include="Interfaces\IListItems.cs" />
     <Compile Include="Md5Hashing.cs" />
     <Compile Include="Migrations\201708131621422_initial.cs" />
     <Compile Include="Migrations\201708131621422_initial.Designer.cs">
@@ -89,6 +89,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DAL\TrackerContext.cs" />
     <Compile Include="DAL\WholeDay.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Repository\NutritionRepository.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

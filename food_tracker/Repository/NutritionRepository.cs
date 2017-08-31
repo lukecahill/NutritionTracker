@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using food_tracker.Interfaces;
+using food_tracker.DAL;
 
 namespace food_tracker.Repository {
-    public class NutritionRepository {
+    public class NutritionRepository : IRepository {
 
         private readonly IMyEntitiesContext _db = null;
 

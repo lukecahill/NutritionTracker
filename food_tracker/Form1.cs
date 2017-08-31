@@ -1,10 +1,12 @@
 ﻿using System;
-using System.Linq;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using food_tracker.Repository;
+using food_tracker.DAL;
+using food_tracker.ListItems;
+using food_tracker.Interfaces;
 
 namespace food_tracker {
     public partial class trackerForm : Form {
