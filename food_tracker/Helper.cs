@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Linq;
+using food_tracker.Repository;
 
 namespace food_tracker {
     public class Helper {
-        private readonly TrackerContext context = null;
+        private readonly NutritionRepository _repo = null;
 
         public Helper() {
-            context = new TrackerContext();
+            _repo = new NutritionRepository(new TrackerContext());
         }
 
         public Dictionary<string, double> calculateTotals(ListBox boxItem) {
@@ -71,16 +72,14 @@ namespace food_tracker {
         }
 
         public string addOrUpdateCurrentDay(string date) {
+            date = Md5Hashing.CreateMD5(date);
+            var day = _repo.GetDay(date);
 
-            var day = Md5Hashing.CreateMD5(date);
-
-            var dayExists = context.Days.FirstOrDefault(x => x.WholeDayId == day);
-            if (dayExists == null) {
-                context.Days.Add(new WholeDay(day));
+            if(day == null) {
+                _repo.AddDay(new WholeDay(date));
             }
-            dayExists = null;
 
-            return day;
+            return date;
         }
     }
 }

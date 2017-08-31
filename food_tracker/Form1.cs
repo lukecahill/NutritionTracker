@@ -4,15 +4,15 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
+using food_tracker.Repository;
 
 namespace food_tracker {
     public partial class trackerForm : Form {
 
-        private readonly TrackerContext context = null;
         private readonly TextBox[] textBoxes, textBoxesWithoutName;
         private readonly Label[] dailyTotalLabels;
-        private bool development = true;
         private readonly Helper helper;
+        private readonly NutritionRepository _repo = null;
 
         public trackerForm() {
             InitializeComponent();
@@ -22,15 +22,15 @@ namespace food_tracker {
             dailyTotalLabels = new Label[] { totalCalLbl, totalFatLbl, totalCarbsLbl, totalFibreLbl, totalProteinLbl, totalSatFatLbl, totalSugarsLbl, totalSaltLbl};
 
             helper = new Helper();
-            setHelpProviders();
-            
-            try {
-                context = new TrackerContext();
+
+            try { 
+                _repo = new NutritionRepository(new TrackerContext());
             } catch(Exception ex) {
                 Debug.WriteLine($"The error was: {ex.Message}");
                 MessageBox.Show($"Error connecting to database.\n\n{ex.Message}");
             }
 
+            setHelpProviders();
             helper.calculateTotals(currentDayItems);
             
             Shown += new EventHandler(loadDataEvent);
@@ -68,14 +68,13 @@ namespace food_tracker {
 
         private void loadData() {
             var day = Md5Hashing.CreateMD5(dateTimePicker.Text.Replace(" ", ""));
-            var data = context.Nutrition.Where(x => x.dayId == day).ToList();
+            var data = _repo.GetItems(day);
             foreach(var item in data) {
                 currentDayItems.Items.Add(new FoodBoxItem(item.calories, item.fats, item.saturatedFats, item.carbohydrates, 
                     item.sugars, item.protein, item.salt, item.fibre, item.name, item.NutritionItemId, item.amount, item.dateTime));
             }
-            
-            // cost involved with below query, with buffering all the data before returning anything.
-            var distinct = context.Nutrition.GroupBy(x => x.name).Select(group => group.FirstOrDefault()).ToArray().Distinct().OrderBy(o => o.dateTime).ThenBy(b => b.name);
+
+            var distinct = _repo.GetItemsUnique();
             foreach (var item in distinct) {
                 pastItemsCombo.Items.Add(new FoodComboItem(item.name, item.NutritionItemId, item.calories, item.fats, 
                     item.saturatedFats, item.carbohydrates, item.sugars, item.protein, item.salt, item.fibre, item.amount));
@@ -119,9 +118,8 @@ namespace food_tracker {
                 textboxvalues,
                 amount.Value
             );
-            
-            context.Nutrition.Add(nutrition);
-            context.SaveChanges();
+
+            _repo.AddItem(nutrition);
             
             currentDayItems.Items.Add(new FoodBoxItem(nutrition.calories, nutrition.fats, nutrition.saturatedFats, 
                 nutrition.carbohydrates, nutrition.sugars, nutrition.protein, 
@@ -163,12 +161,9 @@ namespace food_tracker {
         private void removeItem_Click(object sender, EventArgs e) {
             var selectedItem = (FoodBoxItem)currentDayItems.SelectedItem;
             var itemId = selectedItem.nutritionId;
-            var entity = context.Nutrition.FirstOrDefault(x => x.NutritionItemId == itemId);
+            var removed = _repo.RemoveItem(itemId);
 
-            if(entity != null) {
-                context.Nutrition.Remove(entity);
-                context.SaveChanges();
-            } else {
+            if(removed == false) {
                 MessageBox.Show("Could not delete that item.", "Error deleting item", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
