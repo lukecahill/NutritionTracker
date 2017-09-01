@@ -4,6 +4,7 @@ using food_tracker.ListItems;
 using food_tracker.Repository;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -118,7 +119,8 @@ namespace food_tracker {
             );
 
             _nutritionRepo.Add(nutrition);
-            _dayRepository.Update(day);
+            var result = _dayRepository.Update(day);
+            if (result == null || typeof(WholeDay) != result.GetType()) Debug.WriteLine($"Could not update that item. Returned result was; {result}");
             
             currentDayItems.Items.Add(new FoodBoxItem(nutrition.calories, nutrition.fats, nutrition.saturatedFats, 
                 nutrition.carbohydrates, nutrition.sugars, nutrition.protein, 
