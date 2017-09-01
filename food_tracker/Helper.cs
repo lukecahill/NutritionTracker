@@ -44,15 +44,15 @@ namespace food_tracker {
             return null;
         }
 
-        public double? parseTextBoxForDouble(TextBox text) {
+        public double? parseDouble(string text) {
             var parsed = 0.0D;
-            if (double.TryParse(text.Text, out parsed)) {
+            if (double.TryParse(text, out parsed)) {
                 // suceeded to parse
                 Debug.WriteLine($"Parsed number: {parsed}");
-            } else if (String.IsNullOrWhiteSpace(text.Text)) {
+            } else if (String.IsNullOrWhiteSpace(text)) {
                 Debug.WriteLine("Parsed number was empty; returning 0.");
             } else {
-                Debug.WriteLine($"Could not parse {text.Text} - ensure that this is a valid number.");
+                Debug.WriteLine($"Could not parse {text} - ensure that this is a valid number.");
                 MessageBox.Show("Error when attempting to parse integer values");
                 return null;
             }
