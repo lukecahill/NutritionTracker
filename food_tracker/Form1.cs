@@ -115,7 +115,7 @@ namespace food_tracker {
             );
 
             _repo.AddItem(nutrition);
-            //_repo.UpdateDay(day);
+            _repo.UpdateDay(day);
             
             currentDayItems.Items.Add(new FoodBoxItem(nutrition.calories, nutrition.fats, nutrition.saturatedFats, 
                 nutrition.carbohydrates, nutrition.sugars, nutrition.protein, 
