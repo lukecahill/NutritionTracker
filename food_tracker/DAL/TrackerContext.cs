@@ -1,8 +1,7 @@
 ﻿using System.Data.Entity;
-using food_tracker.Interfaces;
 
 namespace food_tracker.DAL {
-    public class TrackerContext : DbContext, IMyEntitiesContext {
+    public class TrackerContext : DbContext {
 
         public TrackerContext() : base() {
             Configuration.LazyLoadingEnabled = false;
@@ -12,9 +11,5 @@ namespace food_tracker.DAL {
 
         public IDbSet<WholeDay> Days { get; set; }
         public IDbSet<NutritionItem> Nutrition { get; set; }
-        
-        public override int SaveChanges() {
-            return base.SaveChanges();
-        }
     }
 }
