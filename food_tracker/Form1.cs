@@ -1,11 +1,11 @@
-﻿using System;
-using System.Windows.Forms;
-using System.Text.RegularExpressions;
-using System.Collections.Generic;
-using food_tracker.Repository;
-using food_tracker.DAL;
-using food_tracker.ListItems;
+﻿using food_tracker.DAL;
 using food_tracker.Interfaces;
+using food_tracker.ListItems;
+using food_tracker.Repository;
+using System;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace food_tracker {
     public partial class trackerForm : Form {
@@ -13,7 +13,8 @@ namespace food_tracker {
         private readonly TextBox[] textBoxes, textBoxesWithoutName;
         private readonly Label[] dailyTotalLabels;
         private readonly Helper helper;
-        private readonly IRepository _repo = null;
+        private readonly IRepository _nutritionRepo = null;
+        private readonly IDayRepository _dayRepository;
 
         public trackerForm() {
             InitializeComponent();
@@ -21,9 +22,10 @@ namespace food_tracker {
             textBoxes = new TextBox[] { nameTextBox, caloriesTextBox, fatTextBox, saturatesTextBox, carbsTextBox, sugarsTextBox, fibreTextBox, proteinTextBox, saltTextBox, amountTextbox };
             textBoxesWithoutName = new TextBox[] { caloriesTextBox, fatTextBox, saturatesTextBox, carbsTextBox, sugarsTextBox, fibreTextBox, proteinTextBox, saltTextBox };
             dailyTotalLabels = new Label[] { totalCalLbl, totalFatLbl, totalCarbsLbl, totalFibreLbl, totalProteinLbl, totalSatFatLbl, totalSugarsLbl, totalSaltLbl};
-            
-            _repo = new NutritionRepository();
-            helper = new Helper(_repo);
+
+            _nutritionRepo = new NutritionRepository();
+            _dayRepository = new DayRepository();
+            helper = new Helper();
 
             setHelpProviders();
             helper.calculateTotals(currentDayItems);
@@ -59,24 +61,24 @@ namespace food_tracker {
 
         private void loadDataEvent(object sender, EventArgs e) {
             loadData();
+            showTotals();
         }
 
         private void loadData() {
             pastItemsCombo.Items.Clear();
             var day = Md5Hashing.CreateMD5(dateTimePicker.Text.Replace(" ", ""));
-            var data = _repo.GetItems(day);
+            var data = _nutritionRepo.GetItems(day);
             foreach(var item in data) {
                 currentDayItems.Items.Add(new FoodBoxItem(item.calories, item.fats, item.saturatedFats, item.carbohydrates, 
                     item.sugars, item.protein, item.salt, item.fibre, item.name, item.NutritionItemId, item.amount, item.dateTime));
             }
 
-            var distinct = _repo.GetItemsUnique();
+            var distinct = _nutritionRepo.GetItemsUnique();
             foreach (var item in distinct) {
                 pastItemsCombo.Items.Add(new FoodComboItem(item.name, item.NutritionItemId, item.calories, item.fats, 
                     item.saturatedFats, item.carbohydrates, item.sugars, item.protein, item.salt, item.fibre, item.amount));
             }
 
-            showTotals();
         }
 
         private void addNewItemButton_Click(object sender, EventArgs e) {
@@ -91,7 +93,7 @@ namespace food_tracker {
                 return;
             }
 
-            var day = helper.addOrUpdateCurrentDay(dateTimePicker.Text.Replace(" ", ""));
+            var day = addOrUpdateCurrentDay(dateTimePicker.Text.Replace(" ", ""));
 
             var textboxvalues = new List<double>();
             foreach (var textbox in textBoxesWithoutName) {
@@ -115,8 +117,8 @@ namespace food_tracker {
                 amount.Value
             );
 
-            _repo.AddItem(nutrition);
-            _repo.UpdateDay(day);
+            _nutritionRepo.AddItem(nutrition);
+            _dayRepository.UpdateDay(day);
             
             currentDayItems.Items.Add(new FoodBoxItem(nutrition.calories, nutrition.fats, nutrition.saturatedFats, 
                 nutrition.carbohydrates, nutrition.sugars, nutrition.protein, 
@@ -153,12 +155,13 @@ namespace food_tracker {
             currentDayItems.Items.Clear();
             resetLabels();
             loadData();
+            showTotals();
         }
         
         private void removeItem_Click(object sender, EventArgs e) {
             var selectedItem = (FoodBoxItem)currentDayItems.SelectedItem;
             var itemId = selectedItem.nutritionId;
-            var removed = _repo.RemoveItem(itemId);
+            var removed = _nutritionRepo.RemoveItem(itemId);
 
             if(removed == false) {
                 MessageBox.Show("Could not delete that item.", "Error deleting item", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -282,6 +285,21 @@ namespace food_tracker {
             } else {
                 amountTextbox.Clear();
             }
+        }
+
+        private void printWeekTotalToolStripMenuItem_Click(object sender, EventArgs e) {
+            MessageBox.Show("This is currently being developed.");
+        }
+
+        private string addOrUpdateCurrentDay(string date) {
+            date = Md5Hashing.CreateMD5(date);
+            var day = _dayRepository.GetDay(date);
+
+            if (day == null) {
+                _dayRepository.AddDay(new WholeDay(date));
+            }
+
+            return date;
         }
     }
 }

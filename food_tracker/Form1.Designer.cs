@@ -78,6 +78,7 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
+            this.printWeekTotalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.menuItemContext.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -566,6 +567,7 @@
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fillWithExampleDataToolStripMenuItem,
+            this.printWeekTotalToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
@@ -591,6 +593,13 @@
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "&Help";
             this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
+            // 
+            // printWeekTotalToolStripMenuItem
+            // 
+            this.printWeekTotalToolStripMenuItem.Name = "printWeekTotalToolStripMenuItem";
+            this.printWeekTotalToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.printWeekTotalToolStripMenuItem.Text = "&Print Week Total";
+            this.printWeekTotalToolStripMenuItem.Click += new System.EventHandler(this.printWeekTotalToolStripMenuItem_Click);
             // 
             // trackerForm
             // 
@@ -676,6 +685,7 @@
         private System.Windows.Forms.ToolStripMenuItem fillWithExampleDataToolStripMenuItem;
         private System.Windows.Forms.HelpProvider helpProvider1;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.ToolStripMenuItem printWeekTotalToolStripMenuItem;
     }
 }
 

@@ -2,16 +2,11 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Diagnostics;
-using food_tracker.DAL;
-using food_tracker.Interfaces;
 
 namespace food_tracker {
     public class Helper {
-        private readonly IRepository _repo = null;
 
-        public Helper(IRepository repo) {
-            _repo = repo;
-        }
+        public Helper() {}
 
         public Dictionary<string, double> calculateTotals(ListBox boxItem) {
 
@@ -69,17 +64,6 @@ namespace food_tracker {
             }
 
             return empty;
-        }
-
-        public string addOrUpdateCurrentDay(string date) {
-            date = Md5Hashing.CreateMD5(date);
-            var day = _repo.GetDay(date);
-
-            if(day == null) {
-                _repo.AddDay(new WholeDay(date));
-            }
-
-            return date;
         }
     }
 }
