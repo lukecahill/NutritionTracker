@@ -6,6 +6,7 @@ namespace food_tracker.Interfaces {
 
         WholeDay GetDay(string id);
         void AddDay(WholeDay day);
+        WholeDay UpdateDay(string id);
 
         IEnumerable<NutritionItem> GetItems(string id);
         IEnumerable<NutritionItem> GetItemsUnique();

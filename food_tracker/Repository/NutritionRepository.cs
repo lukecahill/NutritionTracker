@@ -4,17 +4,18 @@ using food_tracker.Interfaces;
 using food_tracker.DAL;
 using System.Diagnostics;
 using System;
+using System.Data.Entity;
 
 namespace food_tracker.Repository {
     public class NutritionRepository : IRepository {
 
-        private readonly IMyEntitiesContext _db = null;
+        private readonly TrackerContext _db = null;
 
         public NutritionRepository() {
             try {
                 _db = new TrackerContext();
             } catch(Exception e) {
-                Debug.WriteLine($"Could not connect to database, error: {e.Message}");
+                Debug.WriteLine($"Could not connect to database, error: {e.Message}.\n\nException type: {e.GetType()}");
             }
         }
 
@@ -25,6 +26,20 @@ namespace food_tracker.Repository {
         public void AddDay(WholeDay day) {
             _db.Days.Add(day);
             _db.SaveChanges();
+        }
+
+        public WholeDay UpdateDay(string id) {
+            var entity = _db.Days.FirstOrDefault(x => x.WholeDayId == id);
+
+            if (entity == null) return null;
+
+            // TODO: add column onto database with the total calories for the day. Mark this as modified and then save. 
+            var total = _db.Nutrition.Where(x => x.dayId == id).Sum(x => x.calories);
+            Debug.WriteLine($"The calculated daily total is: {total}");
+            //entry.dailyTotal = total;
+            _db.Entry(entity).State = EntityState.Modified;
+            _db.SaveChanges();
+            return entity;
         }
 
         public IEnumerable<NutritionItem> GetItems(string id) {
