@@ -62,6 +62,7 @@ namespace food_tracker {
         }
 
         private void loadData() {
+            pastItemsCombo.Items.Clear();
             var day = Md5Hashing.CreateMD5(dateTimePicker.Text.Replace(" ", ""));
             var data = _repo.GetItems(day);
             foreach(var item in data) {
