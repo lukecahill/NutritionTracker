@@ -33,10 +33,9 @@ namespace food_tracker.Repository {
 
             if (entity == null) return null;
 
-            // TODO: add column onto database with the total calories for the day. Mark this as modified and then save. 
             var total = _db.Nutrition.Where(x => x.dayId == id).Sum(x => x.calories);
             Debug.WriteLine($"The calculated daily total is: {total}");
-            //entry.dailyTotal = total;
+            entity.dailyTotal = total;
             _db.Entry(entity).State = EntityState.Modified;
             _db.SaveChanges();
             return entity;

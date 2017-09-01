@@ -94,7 +94,7 @@ namespace food_tracker {
 
             var textboxvalues = new List<double>();
             foreach (var textbox in textBoxesWithoutName) {
-                var value = helper.parseTextBoxForDouble(textbox);
+                var value = helper.parseDouble(textbox.Text);
                 if (value != null) {
                     textboxvalues.Add(value.Value);
                 } else {
@@ -102,7 +102,7 @@ namespace food_tracker {
                 }
             }
 
-            var amount = helper.parseTextBoxForDouble(amountTextbox);
+            var amount = helper.parseDouble(amountTextbox.Text);
             if(amount == null) {
                 return;
             }
@@ -115,7 +115,7 @@ namespace food_tracker {
             );
 
             _repo.AddItem(nutrition);
-            //_repo.UpdateDay(day);
+            _repo.UpdateDay(day);
             
             currentDayItems.Items.Add(new FoodBoxItem(nutrition.calories, nutrition.fats, nutrition.saturatedFats, 
                 nutrition.carbohydrates, nutrition.sugars, nutrition.protein, 
