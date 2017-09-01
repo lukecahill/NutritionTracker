@@ -67,13 +67,13 @@ namespace food_tracker {
         private void loadData() {
             pastItemsCombo.Items.Clear();
             var day = Md5Hashing.CreateMD5(dateTimePicker.Text.Replace(" ", ""));
-            var data = _nutritionRepo.GetItems(day);
+            var data = _nutritionRepo.GetAll(day);
             foreach(var item in data) {
                 currentDayItems.Items.Add(new FoodBoxItem(item.calories, item.fats, item.saturatedFats, item.carbohydrates, 
                     item.sugars, item.protein, item.salt, item.fibre, item.name, item.NutritionItemId, item.amount, item.dateTime));
             }
 
-            var distinct = _nutritionRepo.GetItemsUnique();
+            var distinct = _nutritionRepo.GetAllUnique();
             foreach (var item in distinct) {
                 pastItemsCombo.Items.Add(new FoodComboItem(item.name, item.NutritionItemId, item.calories, item.fats, 
                     item.saturatedFats, item.carbohydrates, item.sugars, item.protein, item.salt, item.fibre, item.amount));
@@ -117,8 +117,8 @@ namespace food_tracker {
                 amount.Value
             );
 
-            _nutritionRepo.AddItem(nutrition);
-            _dayRepository.UpdateDay(day);
+            _nutritionRepo.Add(nutrition);
+            _dayRepository.Update(day);
             
             currentDayItems.Items.Add(new FoodBoxItem(nutrition.calories, nutrition.fats, nutrition.saturatedFats, 
                 nutrition.carbohydrates, nutrition.sugars, nutrition.protein, 
@@ -161,7 +161,7 @@ namespace food_tracker {
         private void removeItem_Click(object sender, EventArgs e) {
             var selectedItem = (FoodBoxItem)currentDayItems.SelectedItem;
             var itemId = selectedItem.nutritionId;
-            var removed = _nutritionRepo.RemoveItem(itemId);
+            var removed = _nutritionRepo.Remove(itemId);
 
             if(removed == false) {
                 MessageBox.Show("Could not delete that item.", "Error deleting item", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -293,10 +293,10 @@ namespace food_tracker {
 
         private string addOrUpdateCurrentDay(string date) {
             date = Md5Hashing.CreateMD5(date);
-            var day = _dayRepository.GetDay(date);
+            var day = _dayRepository.Get(date);
 
             if (day == null) {
-                _dayRepository.AddDay(new WholeDay(date));
+                _dayRepository.Add(new WholeDay(date));
             }
 
             return date;

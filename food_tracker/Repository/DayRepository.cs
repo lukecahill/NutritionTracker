@@ -18,16 +18,16 @@ namespace food_tracker.Repository {
             }
         }
         
-        public WholeDay GetDay(string id) {
+        public WholeDay Get(string id) {
             return _db.Days.FirstOrDefault(x => x.WholeDayId == id);
         }
 
-        public void AddDay(WholeDay day) {
+        public void Add(WholeDay day) {
             _db.Days.Add(day);
             _db.SaveChanges();
         }
 
-        public WholeDay UpdateDay(string id) {
+        public WholeDay Update(string id) {
             var entity = _db.Days.FirstOrDefault(x => x.WholeDayId == id);
 
             if (entity == null) return null;

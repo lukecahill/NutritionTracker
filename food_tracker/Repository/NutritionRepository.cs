@@ -18,11 +18,11 @@ namespace food_tracker.Repository {
             }
         }
 
-        public IEnumerable<NutritionItem> GetItems(string id) {
+        public IEnumerable<NutritionItem> GetAll(string id) {
             return _db.Nutrition.Where(x => x.dayId == id).ToList();
         }
 
-        public IEnumerable<NutritionItem> GetItemsUnique() {
+        public IEnumerable<NutritionItem> GetAllUnique() {
             // cost involved with below query, with buffering all the data before returning anything.
             return _db.Nutrition.GroupBy(x => x.name).Select(group => group.FirstOrDefault()).ToArray().Distinct().OrderBy(o => o.dateTime).ThenBy(b => b.name);
         }
@@ -31,12 +31,12 @@ namespace food_tracker.Repository {
             return _db.Nutrition.FirstOrDefault(x => x.NutritionItemId == id);
         }
 
-        public void AddItem(NutritionItem item) {
+        public void Add(NutritionItem item) {
             _db.Nutrition.Add(item);
             _db.SaveChanges();
         }
 
-        public bool RemoveItem(int id) {
+        public bool Remove(int id) {
             var entity = _db.Nutrition.FirstOrDefault(x => x.NutritionItemId == id);
             if(entity != null) {
                 _db.Nutrition.Remove(entity);

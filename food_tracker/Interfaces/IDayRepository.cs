@@ -2,8 +2,8 @@
 
 namespace food_tracker.Interfaces {
     public interface IDayRepository {
-        WholeDay GetDay(string id);
-        void AddDay(WholeDay day);
-        WholeDay UpdateDay(string id);
+        WholeDay Get(string id);
+        void Add(WholeDay day);
+        WholeDay Update(string id);
     }
 }

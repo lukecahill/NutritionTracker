@@ -4,10 +4,10 @@ using food_tracker.DAL;
 namespace food_tracker.Interfaces {
     public interface IRepository {
 
-        IEnumerable<NutritionItem> GetItems(string id);
-        IEnumerable<NutritionItem> GetItemsUnique();
+        IEnumerable<NutritionItem> GetAll(string id);
+        IEnumerable<NutritionItem> GetAllUnique();
         NutritionItem GetItem(int id);
-        void AddItem(NutritionItem item);
-        bool RemoveItem(int id);
+        void Add(NutritionItem item);
+        bool Remove(int id);
     }
 }
