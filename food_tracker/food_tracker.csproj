@@ -82,6 +82,10 @@
     <Compile Include="Migrations\201708250921460_add_datetime.Designer.cs">
       <DependentUpon>201708250921460_add_datetime.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709010856377_add_daily_total.cs" />
+    <Compile Include="Migrations\201709010856377_add_daily_total.Designer.cs">
+      <DependentUpon>201709010856377_add_daily_total.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="DAL\NutritionItem.cs" />
     <Compile Include="Program.cs" />
@@ -101,6 +105,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708250921460_add_datetime.resx">
       <DependentUpon>201708250921460_add_datetime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709010856377_add_daily_total.resx">
+      <DependentUpon>201709010856377_add_daily_total.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
