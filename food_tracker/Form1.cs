@@ -85,7 +85,7 @@ namespace food_tracker {
                 return;
             }
 
-            if (helper.areFieldsEmpty(textBoxesWithoutName)) {
+            if (helper.isFieldEmpty(textBoxesWithoutName)) {
                 MessageBox.Show("You must enter a value for all available fields.", "", MessageBoxButtons.OK);
                 return;
             }
@@ -115,6 +115,7 @@ namespace food_tracker {
             );
 
             _repo.AddItem(nutrition);
+            //_repo.UpdateDay(day);
             
             currentDayItems.Items.Add(new FoodBoxItem(nutrition.calories, nutrition.fats, nutrition.saturatedFats, 
                 nutrition.carbohydrates, nutrition.sugars, nutrition.protein, 
