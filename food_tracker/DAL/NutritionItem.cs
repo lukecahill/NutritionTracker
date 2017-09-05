@@ -42,8 +42,6 @@ namespace food_tracker.DAL {
             this.dateTime = DateTime.UtcNow;
         }
 
-        public override string ToString() {
-            return this.name;
-        }
+        public override string ToString() => this.name;
     }
 }

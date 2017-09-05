@@ -6,7 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 
 namespace food_tracker.Repository {
-    public class NutritionRepository : IRepository {
+    public class NutritionRepository : INutritionRepository {
 
         private readonly TrackerContext _db = null;
 
@@ -18,18 +18,14 @@ namespace food_tracker.Repository {
             }
         }
 
-        public IEnumerable<NutritionItem> GetAll(string id) {
-            return _db.Nutrition.Where(x => x.dayId == id).ToList();
-        }
+        public IEnumerable<NutritionItem> GetAll(string id) => _db.Nutrition.Where(x => x.dayId == id).ToList();
 
         public IEnumerable<NutritionItem> GetAllUnique() {
             // cost involved with below query, with buffering all the data before returning anything.
             return _db.Nutrition.GroupBy(x => x.name).Select(group => group.FirstOrDefault()).ToArray().Distinct().OrderBy(o => o.dateTime).ThenBy(b => b.name);
         }
 
-        public NutritionItem GetItem(int id) {
-            return _db.Nutrition.FirstOrDefault(x => x.NutritionItemId == id);
-        }
+        public NutritionItem GetItem(int id) => _db.Nutrition.FirstOrDefault(x => x.NutritionItemId == id);
 
         public void Add(NutritionItem item) {
             _db.Nutrition.Add(item);

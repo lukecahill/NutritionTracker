@@ -18,9 +18,7 @@ namespace food_tracker.Repository {
             }
         }
         
-        public WholeDay Get(string id) {
-            return _db.Days.FirstOrDefault(x => x.WholeDayId == id);
-        }
+        public WholeDay Get(string id) => _db.Days.FirstOrDefault(x => x.WholeDayId == id);
 
         public void Add(WholeDay day) {
             _db.Days.Add(day);
