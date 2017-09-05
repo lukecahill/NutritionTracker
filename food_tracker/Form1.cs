@@ -2,7 +2,6 @@
 using food_tracker.Interfaces;
 using food_tracker.ListItems;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -74,16 +73,20 @@ namespace food_tracker {
             }
 
             var distinct = _nutritionRepo.GetAllUnique();
+            var collection = new AutoCompleteStringCollection();
+
             foreach (var item in distinct) {
                 pastItemsCombo.Items.Add(new FoodComboItem(item.name, item.NutritionItemId, item.calories, item.fats, 
                     item.saturatedFats, item.carbohydrates, item.sugars, item.protein, item.salt, item.fibre, item.amount));
+                collection.Add(item.name);
             }
-
+            pastItemsCombo.AutoCompleteCustomSource = collection;
         }
 
         private void addNewItemButton_Click(object sender, EventArgs e) {
 
             if (String.IsNullOrWhiteSpace(nameTextBox.Text)) {
+                nameTextBox.ForeColor = System.Drawing.Color.Red;
                 MessageBox.Show("You must enter a value for the name field.", "", MessageBoxButtons.OK);
                 return;
             }
@@ -95,27 +98,16 @@ namespace food_tracker {
 
             var day = addOrUpdateCurrentDay(dateTimePicker.Text.Replace(" ", ""));
 
-            var textboxvalues = new List<double>();
-            foreach (var textbox in textBoxesWithoutName) {
-                var value = helper.parseDouble(textbox.Text);
-                if (value != null) {
-                    textboxvalues.Add(value.Value);
-                } else {
-                    return;
-                }
-            }
+            var textboxvalues = helper.parseTextBoxValues(textBoxesWithoutName);
+            if(textboxvalues == null) { return; }
 
             var amount = helper.parseDouble(amountTextbox.Text);
             if(amount == null) {
+                amountTextbox.ForeColor = System.Drawing.Color.Red;
                 return;
             }
             
-            var nutrition = new NutritionItem(
-                nameTextBox.Text,
-                day,
-                textboxvalues,
-                amount.Value
-            );
+            var nutrition = new NutritionItem(nameTextBox.Text, day, textboxvalues, amount.Value);
 
             _nutritionRepo.Add(nutrition);
             var result = _dayRepository.Update(day);

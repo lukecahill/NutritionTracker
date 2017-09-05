@@ -65,5 +65,21 @@ namespace food_tracker {
 
             return empty;
         }
+
+        public List<double> parseTextBoxValues(TextBox[] textBoxesWithoutName) {
+            var textboxvalues = new List<double>();
+            foreach (var textbox in textBoxesWithoutName) {
+                var value = parseDouble(textbox.Text);
+                if (value != null) {
+                    textboxvalues.Add(value.Value);
+                } else {
+                    // should return what textbox contained an invalid number. 
+                    textbox.ForeColor = System.Drawing.Color.Red;
+                    return null;
+                }
+            }
+
+            return textboxvalues;
+        }
     }
 }

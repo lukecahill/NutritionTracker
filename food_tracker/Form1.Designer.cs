@@ -75,10 +75,10 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fillWithExampleDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.printWeekTotalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
-            this.printWeekTotalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.menuItemContext.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -496,6 +496,8 @@
             // 
             // pastItemsCombo
             // 
+            this.pastItemsCombo.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.pastItemsCombo.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.pastItemsCombo.FormattingEnabled = true;
             this.pastItemsCombo.Location = new System.Drawing.Point(16, 34);
             this.pastItemsCombo.Name = "pastItemsCombo";
@@ -580,6 +582,13 @@
             this.fillWithExampleDataToolStripMenuItem.Text = "&Fill with Example Data";
             this.fillWithExampleDataToolStripMenuItem.Click += new System.EventHandler(this.fillWithExampleDataToolStripMenuItem_Click);
             // 
+            // printWeekTotalToolStripMenuItem
+            // 
+            this.printWeekTotalToolStripMenuItem.Name = "printWeekTotalToolStripMenuItem";
+            this.printWeekTotalToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.printWeekTotalToolStripMenuItem.Text = "&Print Week Total";
+            this.printWeekTotalToolStripMenuItem.Click += new System.EventHandler(this.printWeekTotalToolStripMenuItem_Click);
+            // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
@@ -593,13 +602,6 @@
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "&Help";
             this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
-            // 
-            // printWeekTotalToolStripMenuItem
-            // 
-            this.printWeekTotalToolStripMenuItem.Name = "printWeekTotalToolStripMenuItem";
-            this.printWeekTotalToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
-            this.printWeekTotalToolStripMenuItem.Text = "&Print Week Total";
-            this.printWeekTotalToolStripMenuItem.Click += new System.EventHandler(this.printWeekTotalToolStripMenuItem_Click);
             // 
             // trackerForm
             // 
