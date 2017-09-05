@@ -2,7 +2,7 @@
 using food_tracker.DAL;
 
 namespace food_tracker.Interfaces {
-    public interface IRepository {
+    public interface INutritionRepository {
 
         IEnumerable<NutritionItem> GetAll(string id);
         IEnumerable<NutritionItem> GetAllUnique();
