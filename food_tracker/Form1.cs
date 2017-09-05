@@ -1,7 +1,6 @@
 ﻿using food_tracker.DAL;
 using food_tracker.Interfaces;
 using food_tracker.ListItems;
-using food_tracker.Repository;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -14,18 +13,18 @@ namespace food_tracker {
         private readonly TextBox[] textBoxes, textBoxesWithoutName;
         private readonly Label[] dailyTotalLabels;
         private readonly Helper helper;
-        private readonly IRepository _nutritionRepo = null;
-        private readonly IDayRepository _dayRepository;
+        private readonly INutritionRepository _nutritionRepo = null;
+        private readonly IDayRepository _dayRepository = null;
 
-        public trackerForm() {
+        public trackerForm(INutritionRepository nutrition, IDayRepository day) {
             InitializeComponent();
 
             textBoxes = new TextBox[] { nameTextBox, caloriesTextBox, fatTextBox, saturatesTextBox, carbsTextBox, sugarsTextBox, fibreTextBox, proteinTextBox, saltTextBox, amountTextbox };
             textBoxesWithoutName = new TextBox[] { caloriesTextBox, fatTextBox, saturatesTextBox, carbsTextBox, sugarsTextBox, fibreTextBox, proteinTextBox, saltTextBox };
             dailyTotalLabels = new Label[] { totalCalLbl, totalFatLbl, totalCarbsLbl, totalFibreLbl, totalProteinLbl, totalSatFatLbl, totalSugarsLbl, totalSaltLbl};
 
-            _nutritionRepo = new NutritionRepository();
-            _dayRepository = new DayRepository();
+            _nutritionRepo = nutrition;
+            _dayRepository = day;
             helper = new Helper();
 
             setHelpProviders();
