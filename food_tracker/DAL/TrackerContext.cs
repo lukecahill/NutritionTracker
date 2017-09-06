@@ -3,7 +3,7 @@
 namespace food_tracker.DAL {
     public class TrackerContext : DbContext {
 
-        public TrackerContext() : base() {
+        public TrackerContext() : base("NutritionTracker") {
             Configuration.LazyLoadingEnabled = false;
 
             this.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
