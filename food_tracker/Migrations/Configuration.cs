@@ -10,7 +10,7 @@ namespace food_tracker.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "food_tracker.TrackerContext";
+            ContextKey = "NutritionTracker";
         }
 
         protected override void Seed(DAL.TrackerContext context)

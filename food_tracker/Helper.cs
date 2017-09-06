@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.IO;
 
 namespace food_tracker {
     public class Helper {
@@ -80,6 +81,29 @@ namespace food_tracker {
             }
 
             return textboxvalues;
+        }
+
+        public void saveCurrentFile(string filename, string textToWrite) {
+            using (var stream = new StreamWriter(filename)) {
+                stream.NewLine = "\n";
+                stream.WriteLine(textToWrite);
+                stream.Flush();
+            }
+        }
+
+        public string showSaveFileDialog() {
+            DialogResult diagResult;
+            var filename = "";
+            using (var saveFile = new SaveFileDialog()) {
+                saveFile.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|(*.*)";
+                diagResult = saveFile.ShowDialog();
+
+                if (diagResult == DialogResult.OK) {
+                    filename = saveFile.FileName;
+                }
+            }
+
+            return filename;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using food_tracker.DAL;
 using food_tracker.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Diagnostics;
 using System.Linq;
@@ -36,6 +37,10 @@ namespace food_tracker.Repository {
             _db.Entry(entity).State = EntityState.Modified;
             _db.SaveChanges();
             return entity;
+        }
+
+        public IEnumerable<WholeDay> GetTimeSpan(int start, DateTime end) {
+            return _db.Days.Where(x => x.dateTime >= DbFunctions.AddDays(end, start)).ToList();
         }
     }
 }

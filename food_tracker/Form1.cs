@@ -3,6 +3,7 @@ using food_tracker.Interfaces;
 using food_tracker.ListItems;
 using System;
 using System.Diagnostics;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -14,6 +15,7 @@ namespace food_tracker {
         private readonly Helper helper;
         private readonly INutritionRepository _nutritionRepo = null;
         private readonly IDayRepository _dayRepository = null;
+        private string filename = "";
 
         public trackerForm(INutritionRepository nutrition, IDayRepository day) {
             InitializeComponent();
@@ -280,9 +282,30 @@ namespace food_tracker {
             }
         }
 
+        #region Saving to file
+
         private void printWeekTotalToolStripMenuItem_Click(object sender, EventArgs e) {
-            MessageBox.Show("This is currently being developed.");
+            Debug.WriteLine("Getting timespan");
+            var result = _dayRepository.GetTimeSpan(-7, DateTime.UtcNow);
+            var sb = new StringBuilder();
+
+            foreach (var item in result) {
+                Debug.WriteLine(item.dateTime.ToString("yyyy-MM-dd"));
+                Debug.WriteLine(item.dailyTotal);
+                sb.Append("The total calories for ");
+                sb.Append(item.dateTime.ToString("yyyy-MM-dd"));
+                sb.Append(" was ");
+                sb.Append(item.dailyTotal);
+                sb.Append(".");
+                sb.AppendLine();
+                sb.AppendLine();
+            }
+            filename = helper.showSaveFileDialog();
+
+            helper.saveCurrentFile(filename, sb.ToString());
         }
+
+        #endregion
 
         private string addOrUpdateCurrentDay(string date) {
             date = Md5Hashing.CreateMD5(date);
